@@ -2,7 +2,7 @@ const TABLES = ["owners", "shops", "menus"];
 
 /**
  * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
+ * @returns { Promise<void[]> }
  */
 exports.up = function (knex) {
   const promises = [];
@@ -28,7 +28,7 @@ exports.up = function (knex) {
 
 /**
  * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
+ * @returns { Promise<void[]> }
  */
 exports.down = function (knex) {
   const promises = [];
