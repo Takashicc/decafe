@@ -1,29 +1,38 @@
 import React from "react";
+import { useState } from "react";
 import Select from "react-select";
 import "../styles/searchbar.css";
+import SearchResult from "./SearchResult";
 
 const Searchbar = () => {
-  const [selectedOptions, setSelectedOptions] = React.useState([]);
-
   const options = [
-    { label: "Shinjuku", value: 1 },
-    { label: "Shibuya", value: 2 },
-    { label: "Harajuku", value: 3 },
-    { label: "Kyoto", value: 4 },
-    { label: "Osaka", value: 5 },
+    { label: "Shinjuku", value: "shinjuku" },
+    { label: "Shibuya", value: "shibuya" },
+    { label: "Harajuku", value: "harajuku" },
+    { label: "Kyoto", value: "kyoto" },
+    { label: "Osaka", value: "osaka" },
   ];
+
+  const [selected, setSelected] = useState(null);
+
+  const handleChange = (event: any) => {
+    console.log(event);
+    setSelected(event);
+  };
 
   return (
     <div className="searchbarWapper">
       <Select
+        value={selected}
+        onChange={handleChange}
         options={options}
         placeholder="ex. Shinjuku"
         backspaceRemovesValue
         isClearable
         escapeClearsValue
-        closeMenuOnSelect
         openMenuOnClick={false}
       />
+      {selected !== null ? <SearchResult /> : null}
     </div>
   );
 };
