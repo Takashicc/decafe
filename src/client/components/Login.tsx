@@ -1,9 +1,10 @@
-import React, { Fragment, useState, useRef } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "../styles/Login.css";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Owner from "./Owner";
+import Createacc from "./Createacc";
 
 interface ErrorMessage {
   name: string;
@@ -33,7 +34,7 @@ function Login() {
     name: "",
     message: "",
   });
-  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
   const [formValue, setFormValue] = useState<FormValue>({
     name: "",
     pass: "",
@@ -69,7 +70,7 @@ function Login() {
         // Invalid password
         setErrorMessages({ name: "pass", message: loginErrors.pass });
       } else {
-        setIsSubmitted(true);
+        setLoginSuccess(true);
       }
     } else {
       // Username not found
@@ -115,17 +116,24 @@ function Login() {
         <div className="button-container">
           <input type="submit" />
         </div>
+        <div>
+          Don't have an account? click <a href="/Createacc">HERE</a> to create
+          one!
+        </div>
       </form>
     </div>
   );
 
   return (
-    <div className="login">
-      <div className="login-form">
-        <div className="title">Sign In</div>
-        {isSubmitted ? <Owner /> : renderForm}
+    <Router>
+      <div className="login">
+        <div className="login-form">
+          <div className="title">Sign In</div>
+          {isSubmitted ? <Owner /> : renderForm}
+        </div>
       </div>
-    </div>
+      <Route path="/Createacc" component={Createacc} />
+    </Router>
   );
 }
 
