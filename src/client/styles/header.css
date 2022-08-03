@@ -8,3 +8,19 @@
 .logoPic {
     border-radius: 10px;
 }
+
+.shopLinkWrapper{
+  margin-left: auto;
+  text-decoration: none;
+}
+
+.shopLinkWrapper a {
+  color: black;
+  font-family: fantasy;
+  text-decoration: none;
+}
+
+.shopLinkWrapper a:hover {
+  color:brown;
+  text-decoration: none;
+}
