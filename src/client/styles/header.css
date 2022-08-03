@@ -4,3 +4,7 @@
     justify-content: flex-start;
     background-color: #e88d71;
   }
+
+.logoPic {
+    border-radius: 10px;
+}
