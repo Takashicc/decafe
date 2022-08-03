@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom/client";
 import "../styles/Login.css";
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import Owner from "./Owner";
 import Createacc from "./Createacc";
 
@@ -16,9 +15,9 @@ interface FormValue {
   pass: string;
 }
 
-function Login() {
+const Login: React.FC = () => {
   //seed data
-  const database = [
+  let database = [
     {
       username: "user1",
       password: "pass1",
@@ -39,15 +38,10 @@ function Login() {
     name: "",
     pass: "",
   });
-
-  // User Login info
-  const loginErrors = {
-    uname: "invalid username",
-    pass: "invalid password",
-  };
+  const [accCreate, setAccCreate] = useState<boolean>(false);
 
   //Update Input
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
     setFormValue((prevState) => {
       return {
@@ -57,8 +51,12 @@ function Login() {
     });
   };
 
+  const handleClick = (): void => {
+    setAccCreate(true);
+  };
+
   //Handle Submit
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
     // Check if username is correct
@@ -68,22 +66,20 @@ function Login() {
     if (userData) {
       if (userData.password !== formValue.pass) {
         // Invalid password
-        setErrorMessages({ name: "pass", message: loginErrors.pass });
+        setErrorMessages({ name: "pass", message: "invalid pass" });
       } else {
         setLoginSuccess(true);
       }
     } else {
       // Username not found
-      setErrorMessages({ name: "name", message: loginErrors.uname });
+      setErrorMessages({ name: "name", message: "invalid username" });
     }
   };
 
   // Generate error message
-  const renderErrorMessage = (name: string) => {
+  const renderErrorMessage = (name: string): JSX.Element | undefined => {
     if (name === errorMessages.name) {
       return <div className="error">{errorMessages.message}</div>;
-    } else {
-      return undefined;
     }
   };
 
@@ -91,6 +87,7 @@ function Login() {
   const renderForm = (
     <div className="form">
       <form onSubmit={handleSubmit}>
+        <div> LOG IN!</div>
         <div className="input-container">
           <label>Username </label>
           <input
@@ -117,21 +114,28 @@ function Login() {
           <input type="submit" />
         </div>
         <div>
-          Don't have an account? click <a href="/Createacc">HERE</a> to create
-          one!
+          Don't have an account? click{" "}
+          <Link to="/Createacc" onClick={handleClick}>
+            HERE
+          </Link>{" "}
+          to create one!
         </div>
       </form>
     </div>
   );
 
   return (
-    <div className="login">
-      <div className="login-form">
-        <div className="title">Sign In</div>
-        {loginSuccess ? <Owner /> : renderForm}
+    //Need router here to activate Link
+    <Router>
+      <div className="login">
+        <div className="login-form">
+          {accCreate ? <Createacc /> : null}
+          {loginSuccess ? <Owner /> : null}
+          {!accCreate && !loginSuccess ? renderForm : null}
+        </div>
       </div>
-    </div>
+    </Router>
   );
-}
+};
 
 export default Login;
