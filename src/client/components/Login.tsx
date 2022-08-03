@@ -125,15 +125,12 @@ function Login() {
   );
 
   return (
-    <Router>
-      <div className="login">
-        <div className="login-form">
-          <div className="title">Sign In</div>
-          {isSubmitted ? <Owner /> : renderForm}
-        </div>
+    <div className="login">
+      <div className="login-form">
+        <div className="title">Sign In</div>
+        {loginSuccess ? <Owner /> : renderForm}
       </div>
-      <Route path="/Createacc" component={Createacc} />
-    </Router>
+    </div>
   );
 }
 
