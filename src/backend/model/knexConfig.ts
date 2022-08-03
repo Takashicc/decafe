@@ -1,6 +1,11 @@
 import knex from "knex";
 import config from "./knexfile";
 
-const environment = process.env.ENVIRONMENT || "development";
+let knexConfig;
+if (process.env.ENVIRONMENT === "production") {
+  knexConfig = config.production;
+} else {
+  knexConfig = config.development;
+}
 
-export default knex(config[environment]);
+export default knex(knexConfig);
