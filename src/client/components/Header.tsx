@@ -3,17 +3,19 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import "../styles/header.css";
 
-export default function Header() {
+const Header = () => {
   return (
     <Router>
       <div className="header">
         <div className="picWrapper">
-          <img
-            className="logoPic"
-            width="50"
-            src="https://i.im.ge/2022/08/03/FCRHSS.logo-cafe.jpg"
-            alt="logo cafe"
-          />
+          <Link to="/">
+            <img
+              className="logoPic"
+              width="50"
+              src="https://i.im.ge/2022/08/03/FCRHSS.logo-cafe.jpg"
+              alt="logo cafe"
+            />
+          </Link>
         </div>
         <div className="shopLinkWrapper">
           <Link to="/login">Shop Login</Link>
@@ -21,6 +23,9 @@ export default function Header() {
       </div>
     </Router>
   );
-}
+};
 
+export default Header;
+
+//<Route exact path="/" component={App} />
 //<Route path="/about" component={Login} />
