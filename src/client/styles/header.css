@@ -1,0 +1,6 @@
+.header {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #e88d71;
+  }
