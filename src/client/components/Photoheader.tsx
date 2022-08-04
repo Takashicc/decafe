@@ -1,23 +1,38 @@
 import React, { useState } from "react";
 import "../styles/Login.css";
 import "../styles/Image.css";
-import { Fragment } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+//open image in new tab
+const openInNewTab = (url: string): void => {
+  const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+  if (newWindow) newWindow.opener = null;
+};
 
 const Photoheader: React.FC = () => {
+  //image string to map
+  const images = [
+    "images/ID1SID1.jpg",
+    "images/ID1SID2.jpg",
+    "images/ID1SID3.jpg",
+    "images/ID1SID4.jpg",
+    "images/ID1SID5.jpg",
+  ];
+
   return (
-    <Router>
-      <div className="imagewrapper">
-        <Link to="images/ID1SID1.jpg">
-          <img src={"images/ID1SID1.jpg"} className="image" />
-        </Link>
-        <img src={"images/ID1SID2.jpg"} className="image" />
-        <img src={"images/ID1SID3.jpg"} className="image" />
-        <img src={"images/ID1SID4.jpg"} className="image" />
-        <img src={"images/ID1SID5.jpg"} className="image" />
-      </div>
-    </Router>
+    <div className="imagewrapper">
+      {images.map((image: string) => {
+        return (
+          <img
+            className="image"
+            src={`${image}`}
+            onClick={() => {
+              openInNewTab(`${image}`);
+            }}
+          />
+        );
+      })}
+    </div>
   );
 };
 
