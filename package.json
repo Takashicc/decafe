@@ -30,7 +30,7 @@
     "html-webpack-plugin": "^5.5.0",
     "ts-loader": "^9.3.1"
   },
-  "main": "dist/backend/index.js",
+  "main": "build/backend/index.js",
   "scripts": {
     "build_client": "webpack --mode development",
     "build_server": "echo 'Compiling server...' && tsc -p tsconfig.backend.json && echo 'Compile done!'",

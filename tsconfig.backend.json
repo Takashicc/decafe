@@ -9,7 +9,7 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
-    "outDir": "./build/backend",
+    "outDir": "./build",
     "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
