@@ -27,10 +27,14 @@
   },
   "main": "dist/backend/index.js",
   "scripts": {
-    "server_build": "echo 'Compiling server...' && tsc -p tsconfig.backend.json && echo 'Compile done!'",
-    "server": "npm run server_build && node build/backend",
+    "build_client": "webpack --mode development",
+    "build_server": "echo 'Compiling server...' && tsc -p tsconfig.backend.json && echo 'Compile done!'",
+    "build_client_prod": "webpack --mode production",
+    "build_server_prod": "tsc -p tsconfig.backend.json",
     "client": "webpack-dev-server --mode development",
-    "build": "webpack --mode development",
+    "server": "npm run build_server && npm run server",
+    "run_server": "node build/backend",
+    "prod": "npm run build_client_prod && npm run build_server_prod && npm run run_server",
     "dev": "concurrently \"nodemon\" \"npm run client\"",
     "test": "echo 'Error: no test specified' && exit 1",
     "migrate": "knex migrate:latest --knexfile src/backend/model/knexfile.js"
