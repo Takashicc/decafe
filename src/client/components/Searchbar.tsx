@@ -1,4 +1,5 @@
 import React from "react";
+import { components } from "react-select";
 import { useState } from "react";
 import Select from "react-select";
 import "../styles/searchbar.css";
@@ -17,7 +18,7 @@ const Searchbar = () => {
 
   const handleChange = (event: any) => {
     console.log(event);
-    setSelected(event);
+    if (event !== null) setSelected(event);
   };
 
   return (
@@ -31,6 +32,10 @@ const Searchbar = () => {
         isClearable
         escapeClearsValue
         openMenuOnClick={false}
+        components={{
+          DropdownIndicator: () => null,
+          IndicatorSeparator: () => null,
+        }}
       />
       {selected !== null ? <SearchResult /> : null}
     </div>
