@@ -42,7 +42,8 @@
     "prod": "npm run build_client_prod && npm run build_server_prod && npm run run_server",
     "dev": "concurrently \"nodemon\" \"npm run client\"",
     "test": "echo 'Error: no test specified' && exit 1",
-    "migrate": "knex migrate:latest --knexfile src/backend/model/knexfile.js"
+    "migrate": "knex migrate:latest --knexfile src/backend/model/knexfile.js",
+    "seed": "knex seed:run --knexfile src/backend/model/knexfile.js"
   },
   "eslintConfig": {
     "extends": [
