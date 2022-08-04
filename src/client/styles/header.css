@@ -10,17 +10,26 @@
 }
 
 .shopLinkWrapper{
+  margin-top: 1rem;
   margin-left: auto;
   text-decoration: none;
 }
 
 .shopLinkWrapper a {
   color: black;
-  font-family: fantasy;
+  font-weight: bold;
+  font-family:monospace ;
   text-decoration: none;
 }
 
 .shopLinkWrapper a:hover {
   color:brown;
   text-decoration: none;
+}
+
+.welcomeMessageWrapper {
+  margin-top: 1rem;
+  margin-left: auto;
+  font-family: fantasy;
+  color: black;
 }
