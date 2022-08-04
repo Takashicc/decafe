@@ -13,3 +13,11 @@
     object-fit: cover;
     cursor: pointer;
 }
+
+.Shopmain{
+  overflow: hidden;
+}
+
+.Shopmain::-webkit-scrollbar {
+    display: none;
+  }
