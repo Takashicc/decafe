@@ -29,7 +29,8 @@
     "client": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "dev": "concurrently \"nodemon\" \"npm run client\"",
-    "test": "echo 'Error: no test specified' && exit 1"
+    "test": "echo 'Error: no test specified' && exit 1",
+    "migrate": "knex migrate:latest --knexfile src/backend/model/knexfile.js"
   },
   "eslintConfig": {
     "extends": [
