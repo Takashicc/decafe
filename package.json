@@ -25,7 +25,8 @@
   },
   "main": "dist/backend/index.js",
   "scripts": {
-    "server": "echo 'Compiling server...' && tsc -p tsconfig.backend.json && echo 'Compile done!' && node build/backend",
+    "server_build": "echo 'Compiling server...' && tsc -p tsconfig.backend.json && echo 'Compile done!'",
+    "server": "npm run server_build && node build/backend",
     "client": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "dev": "concurrently \"nodemon\" \"npm run client\"",
