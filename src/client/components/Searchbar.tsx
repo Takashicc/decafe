@@ -37,7 +37,7 @@ const Searchbar = () => {
           IndicatorSeparator: () => null,
         }}
       />
-      {selected !== null ? <SearchResult /> : null}
+      {selected !== null ? <SearchResult selected={selected} /> : null}
     </div>
   );
 };
