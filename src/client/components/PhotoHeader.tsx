@@ -11,11 +11,11 @@ const openInNewTab = (url: string): void => {
 const Photoheader: React.FC = () => {
   //image string to map
   const images = [
-    "images/ID1SID1.jpg",
-    "images/ID1SID2.jpg",
-    "images/ID1SID3.jpg",
-    "images/ID1SID4.jpg",
-    "images/ID1SID5.jpg",
+    "images/1 (3).jpg",
+    "images/2.jpg",
+    "images/1 (5).jpg",
+    "images/1.jpg",
+    "images/1 (4).jpg",
   ];
 
   return (
