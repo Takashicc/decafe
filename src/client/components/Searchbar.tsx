@@ -2,11 +2,19 @@ import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { getCities } from "../api";
 import "../styles/searchbar.css";
-interface SearchbarOptions {
-  label: string;
-  value: string;
+import { SearchbarOptions } from "./Home";
+
+interface SearchbarProps {
+  selectedOption: SearchbarOptions | null;
+  setSelectedOption: React.Dispatch<
+    React.SetStateAction<SearchbarOptions | null>
+  >;
 }
-const Searchbar = ({ selected, setSelected }: any) => {
+
+const Searchbar: React.FC<SearchbarProps> = ({
+  selectedOption,
+  setSelectedOption,
+}) => {
   const [options, setOptions] = useState<SearchbarOptions[]>([]);
 
   useEffect(() => {
@@ -19,14 +27,14 @@ const Searchbar = ({ selected, setSelected }: any) => {
     })();
   }, []);
 
-  const handleChange = (event: any) => {
-    if (event !== null) setSelected(event);
+  const handleChange = (newValue: SearchbarOptions | null) => {
+    if (newValue !== null) setSelectedOption(newValue);
   };
 
   return (
     <div className="searchbarWapper">
       <Select
-        value={selected}
+        value={selectedOption}
         onChange={handleChange}
         options={options}
         placeholder="ex. Shinjuku"

@@ -1,17 +1,28 @@
 import { useEffect, useState } from "react";
 import Header from "./Header";
-import AuthHeader from "./AuthHeader";
 import Searchbar from "./Searchbar";
 import SearchResult from "./SearchResult";
 
-const Home = ({ loggedIn }: any) => {
-  const [selected, setSelected] = useState<any>(null);
+export type SearchbarOptions = {
+  label: string;
+  value: string;
+};
+
+const Home = () => {
+  const [selectedOption, setSelectedOption] = useState<SearchbarOptions | null>(
+    null
+  );
 
   return (
     <>
-      {loggedIn === false ? <Header /> : <AuthHeader />}
-      <Searchbar selected={selected} setSelected={setSelected} />
-      {selected !== null ? <SearchResult selected={selected} /> : null}
+      <Header />
+      <Searchbar
+        selectedOption={selectedOption}
+        setSelectedOption={setSelectedOption}
+      />
+      {selectedOption !== null ? (
+        <SearchResult selectedOption={selectedOption} />
+      ) : null}
     </>
   );
 };
