@@ -27,7 +27,9 @@ export async function createShop(shop: modelType.ShopCreate): Promise<number> {
  * @param id shop id
  * @returns shop menu find by shop id
  */
-export async function findMenuById(shopid: number): Promise<modelType.MenuGet> {
+export async function findMenuByShopId(
+  shopid: number
+): Promise<modelType.MenuGet[]> {
   let menu: modelType.MenuGet[];
 
   try {
