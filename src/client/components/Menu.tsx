@@ -1,11 +1,24 @@
 import React, { useState } from "react";
+import modelType from "../model.type";
 
-const Menu: React.FC = () => {
-  const menu = [{ name: "mega-decaf Takashi special", price: "50000" }];
+interface ShopInfoProps {
+  shopDetail: modelType.ShopAndMenu;
+}
+
+const Menu: React.FC<ShopInfoProps> = ({ shopDetail }) => {
+  const menu = shopDetail?.menus;
   return (
     <div>
-      {menu[0].name}
-      {menu[0].price}
+      {menu?.map((singleMenu) => {
+        return (
+          <>
+            <div>
+              {" "}
+              {singleMenu.name} {singleMenu.price}
+            </div>
+          </>
+        );
+      })}
     </div>
   );
 };
