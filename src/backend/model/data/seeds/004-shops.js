@@ -27,5 +27,12 @@ exports.seed = async function (knex) {
       city: "Aichi",
       address: "高知県高知市鏡的渕98-11",
     },
+    {
+      id: 4,
+      owner_id: 2,
+      name: "Tom 3号店",
+      city: "Aichi",
+      address: "高知県高知市鏡的渕100-02",
+    },
   ]);
 };
