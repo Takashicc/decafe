@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import modelType from "../model.type";
-import { findShopById } from "../api";
+import { findShopAndMenuById } from "../api";
 import Photoheader from "./PhotoHeader";
 import Shopinfo from "./ShopInfo";
 import Map from "./Map";
@@ -8,11 +8,9 @@ import Menu from "./Menu";
 import { useParams } from "react-router-dom";
 import isNumeric from "validator/lib/isNumeric";
 
-const shopObj = { name: "", address: "" };
-
 const ShopMain: React.FC = () => {
   let { id } = useParams();
-  const [shopDetail, setShopDetail] = useState<modelType.ShopGet>();
+  const [shopDetail, setShopDetail] = useState<modelType.ShopAndMenu>();
   const [notFound, setNotFound] = useState<boolean>(false);
 
   useEffect(() => {
@@ -23,9 +21,8 @@ const ShopMain: React.FC = () => {
         return;
       }
       const numId: number = +id;
-      const shop: modelType.ShopGet = await findShopById(numId);
+      const shop: modelType.ShopAndMenu = await findShopAndMenuById(numId);
       setShopDetail(shop);
-      console.log(shop);
       if (shop === undefined) {
         setNotFound(true);
       } else {
@@ -43,7 +40,7 @@ const ShopMain: React.FC = () => {
       </div>
       <Map shopDetail={shopDetail} />
 
-      <Menu />
+      <Menu shopDetail={shopDetail} />
     </div>
   );
 };
