@@ -1,23 +1,47 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
+import modelType from "../model.type";
+import { findShopById } from "../api";
 import Photoheader from "./PhotoHeader";
 import Shopinfo from "./ShopInfo";
 import Map from "./Map";
 import Menu from "./Menu";
-import ShopDetail from "./ShopDetail";
+import { useParams } from "react-router-dom";
+import isNumeric from "validator/lib/isNumeric";
 
-//prop to be used by components
-const shopObj = {};
+const shopObj = { name: "", address: "" };
 
 const ShopMain: React.FC = () => {
+  let { id } = useParams();
+  const [shopDetail, setShopDetail] = useState<modelType.ShopGet>();
+  const [notFound, setNotFound] = useState<boolean>(false);
+
+  useEffect(() => {
+    (async () => {
+      if (!id || !isNumeric(id)) {
+        setNotFound(true);
+        setShopDetail(undefined);
+        return;
+      }
+      const numId: number = +id;
+      const shop: modelType.ShopGet = await findShopById(numId);
+      setShopDetail(shop);
+      console.log(shop);
+      if (shop === undefined) {
+        setNotFound(true);
+      } else {
+        setNotFound(false);
+      }
+    })();
+  }, [id]);
+
   return (
     <div className="Shopmain">
       <Photoheader />
 
-      <Shopinfo />
-
-      <ShopDetail />
-
-      <Map />
+      <div className="shopDetail">
+        <Shopinfo shopDetail={shopDetail} />
+      </div>
+      <Map shopDetail={shopDetail} />
 
       <Menu />
     </div>
