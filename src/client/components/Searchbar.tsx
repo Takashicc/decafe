@@ -1,11 +1,8 @@
 import React from "react";
-import { components } from "react-select";
-import { useState } from "react";
 import Select from "react-select";
 import "../styles/searchbar.css";
-import SearchResult from "./SearchResult";
 
-const Searchbar = () => {
+const Searchbar = ({ selected, setSelected }: any) => {
   const options = [
     { label: "Shinjuku", value: "shinjuku" },
     { label: "Shibuya", value: "shibuya" },
@@ -14,10 +11,7 @@ const Searchbar = () => {
     { label: "Osaka", value: "osaka" },
   ];
 
-  const [selected, setSelected] = useState(null);
-
   const handleChange = (event: any) => {
-    console.log(event);
     if (event !== null) setSelected(event);
   };
 
@@ -37,7 +31,6 @@ const Searchbar = () => {
           IndicatorSeparator: () => null,
         }}
       />
-      {selected !== null ? <SearchResult selected={selected} /> : null}
     </div>
   );
 };
