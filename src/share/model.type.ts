@@ -17,3 +17,10 @@ export interface ShopCreate {
   name: string;
   address: string;
 }
+
+export type ShopAndMenu =
+  | {
+      shop: ShopGet;
+      menus: MenuGet[];
+    }
+  | undefined;
