@@ -27,10 +27,14 @@ export const createShop = async (
  * @param id shop id
  * @returns Shop data find by id
  */
-export const findShopById = async (id: number): Promise<modelType.ShopGet> => {
-  let shop: modelType.ShopGet;
+export const findShopAndMenuById = async (
+  id: number
+): Promise<modelType.ShopAndMenu> => {
+  let shop: modelType.ShopAndMenu;
   try {
-    const response = await axios.get<modelType.ShopGet>(`/api/v1/shops/${id}`);
+    const response = await axios.get<modelType.ShopAndMenu>(
+      `/api/v1/shops/${id}`
+    );
     shop = response.data;
   } catch (error) {
     return shop;
