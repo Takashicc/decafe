@@ -1,18 +1,11 @@
 import React, { useState } from "react";
 import "../styles/Login.css";
-
+import { useForm } from "react-hook-form";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import Owner from "./Owner";
-import Createacc from "./Createacc";
-
-interface ErrorMessage {
-  name: string;
-  message: string;
-}
 
 interface FormValue {
-  name: string;
-  pass: string;
+  username: string;
+  password: string;
 }
 
 const Login: React.FC = () => {
@@ -29,110 +22,99 @@ const Login: React.FC = () => {
   ];
 
   // React States
-  const [errorMessages, setErrorMessages] = useState<ErrorMessage>({
-    name: "",
-    message: "",
-  });
-  const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
-  const [formValue, setFormValue] = useState<FormValue>({
-    name: "",
-    pass: "",
-  });
   const [accCreate, setAccCreate] = useState<boolean>(false);
 
-  //Update Input
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    const { name, value } = event.target;
-    setFormValue((prevState) => {
-      return {
-        ...prevState,
-        [name]: value,
-      };
-    });
+  //useForm setup
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+  });
+
+  //sets current state to submitted username/pass
+  const onSubmit = (data: any) => {
+    console.log("data received");
   };
 
-  const handleClick = (): void => {
+  //Goes to account creation page
+  const accountCreate = (): void => {
     setAccCreate(true);
   };
 
-  //Handle Submit
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-    event.preventDefault();
-
-    // Check if username is correct
-    const userData = database.find((user) => user.username === formValue.name);
-
-    // Check if user pass is corect
-    if (userData) {
-      if (userData.password !== formValue.pass) {
-        // Invalid password
-        setErrorMessages({ name: "pass", message: "invalid pass" });
-      } else {
-        setLoginSuccess(true);
-      }
-    } else {
-      // Username not found
-      setErrorMessages({ name: "name", message: "invalid username" });
-    }
-  };
-
-  // Generate error message
-  const renderErrorMessage = (name: string): JSX.Element | undefined => {
-    if (name === errorMessages.name) {
-      return <div className="error">{errorMessages.message}</div>;
-    }
-  };
-
-  // Login form to update input
-  const renderForm = (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
-        <div> LOG IN!</div>
-        <div className="input-container">
-          <label>Username </label>
-          <input
-            type="text"
-            name="name"
-            onChange={handleChange}
-            value={formValue.name}
-            required
-          />
-          {renderErrorMessage("name")}
-        </div>
-        <div className="input-container">
-          <label>Password </label>
-          <input
-            type="password"
-            name="pass"
-            onChange={handleChange}
-            value={formValue.pass}
-            required
-          />
-          {renderErrorMessage("pass")}
-        </div>
-        <div className="button-container">
-          <input type="submit" />
-        </div>
-        <div>
-          Don't have an account? click{" "}
-          <Link to="/Createacc" onClick={handleClick}>
-            HERE
-          </Link>{" "}
-          to create one!
-        </div>
-      </form>
-    </div>
-  );
+  // sets userData received from form
+  let userData: FormValue | undefined;
 
   return (
-    //Need router here to activate Link
     <Router>
       <div className="login">
-        <div className="login-form">
-          {accCreate ? <Createacc /> : null}
-          {loginSuccess ? <Owner /> : null}
-          {!accCreate && !loginSuccess ? renderForm : null}
-        </div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div> LOG IN!</div>
+          <div className="input-container">
+            <label>Username </label>
+            <input
+              placeholder="User Name"
+              type="text"
+              className="input"
+              {...register("username", {
+                validate: {
+                  exists: (username) => {
+                    userData = database.find(
+                      (user) => user.username === username
+                    );
+                    if (!userData) return "wrong username, bro";
+                  },
+                  // message: "Your account does not",
+                },
+                required: "This is required",
+                minLength: {
+                  value: 4,
+                  message: "Min length is 4",
+                },
+              })}
+            />
+            <div>{errors.username?.message}</div>
+          </div>
+          <div className="input-container">
+            <label>Password </label>
+            <input
+              type={"password"}
+              placeholder="Password"
+              {...register("password", {
+                required: "This is required",
+                validate: {
+                  goodPass: (password) => {
+                    console.log(userData);
+                    if (userData) {
+                      if (userData.password !== password) {
+                        return "wrong password, fool!";
+                      }
+                    }
+                  },
+                },
+                minLength: {
+                  value: 4,
+                  message: "Min length is 4",
+                },
+              })}
+            />
+            <div>{errors.password?.message}</div>
+          </div>
+          <div className="button-container">
+            <input type="submit" />
+          </div>
+          <div>
+            Don't have an account? click{" "}
+            <Link to="/Createacc" onClick={accountCreate}>
+              HERE
+            </Link>{" "}
+            to create one!
+          </div>
+        </form>
       </div>
     </Router>
   );
