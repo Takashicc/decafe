@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import { Fragment } from "react";
+import modelType from "../model.type";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+interface ShopInfoProps {
+  shopDetail: modelType.ShopGet;
+}
 
-const Shopinfo: React.FC = () => {
+const Shopinfo: React.FC<ShopInfoProps> = ({ shopDetail }) => {
   //example store
   const store = {
-    name: "Decafeination",
-    Address: "東京都鴨町６丁目３－１－５５",
+    name: shopDetail?.name,
+    address: shopDetail?.address,
   };
 
   return (
     <div>
       {store.name}
-      {store.Address}
+      {store.address}
     </div>
   );
 };
