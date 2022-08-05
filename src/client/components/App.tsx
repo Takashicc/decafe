@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Home from "./Home";
+import Login from "./Login";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const App = () => {
@@ -10,7 +11,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<Home loggedIn={loggedIn} />}></Route>
-          <Route path="/login" element={<div>This is login page</div>}></Route>
+          <Route path="/login" element={<Login />}></Route>
         </Routes>
       </Router>
     </>

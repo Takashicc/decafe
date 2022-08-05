@@ -1,13 +1,11 @@
-import Header from "./Header";
 import { useEffect, useState } from "react";
+import Header from "./Header";
 import AuthHeader from "./AuthHeader";
 import Searchbar from "./Searchbar";
 import SearchResult from "./SearchResult";
 
 const Home = ({ loggedIn }: any) => {
   const [selected, setSelected] = useState<any>(null);
-
-  console.log("setSelected home ", setSelected);
 
   return (
     <>

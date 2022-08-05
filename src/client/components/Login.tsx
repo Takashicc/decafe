@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/Login.css";
 import { useForm } from "react-hook-form";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import Header from "./Header";
 
 interface FormValue {
   username: string;
@@ -50,7 +51,8 @@ const Login: React.FC = () => {
   let userData: FormValue | undefined;
 
   return (
-    <Router>
+    <>
+      <Header />
       <div className="login">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div> LOG IN!</div>
@@ -116,7 +118,7 @@ const Login: React.FC = () => {
           </div>
         </form>
       </div>
-    </Router>
+    </>
   );
 };
 
