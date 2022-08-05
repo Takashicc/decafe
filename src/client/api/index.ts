@@ -37,3 +37,19 @@ export const findShopById = async (id: number): Promise<modelType.ShopGet> => {
   }
   return shop;
 };
+
+/**
+ * Get all cities data from shops table.
+ *
+ * @returns Inserted data id
+ */
+export const getCities = async (): Promise<modelType.CitiesGet[]> => {
+  let cities: modelType.CitiesGet[];
+  try {
+    const response = await axios.get<modelType.CitiesGet[]>(`/api/v1/cities`);
+    cities = response.data;
+  } catch (error) {
+    throw error;
+  }
+  return cities;
+};

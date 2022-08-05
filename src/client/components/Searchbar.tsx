@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
+import { getCities } from "../api";
 import "../styles/searchbar.css";
-
+interface SearchbarOptions {
+  label: string;
+  value: string;
+}
 const Searchbar = ({ selected, setSelected }: any) => {
-  const options = [
-    { label: "Shinjuku", value: "shinjuku" },
-    { label: "Shibuya", value: "shibuya" },
-    { label: "Harajuku", value: "harajuku" },
-    { label: "Kyoto", value: "kyoto" },
-    { label: "Osaka", value: "osaka" },
-  ];
+  const [options, setOptions] = useState<SearchbarOptions[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const result = await getCities();
+      const cities: SearchbarOptions[] = result.map((e) => {
+        return { label: e.city, value: e.city };
+      });
+      setOptions(cities);
+    })();
+  }, []);
 
   const handleChange = (event: any) => {
     if (event !== null) setSelected(event);

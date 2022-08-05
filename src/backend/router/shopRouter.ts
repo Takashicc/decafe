@@ -43,4 +43,17 @@ router.get("/shops/:id", async (req, res) => {
   return res.status(200).send(shop);
 });
 
+router.get("/cities", async (req, res) => {
+  let cities: modelType.CitiesGet;
+  try {
+    cities = await ShopRepository.getCities();
+  } catch (error) {
+    console.log(error);
+    res.status(500).send();
+    return;
+  }
+
+  return res.status(200).send(cities);
+});
+
 export default router;

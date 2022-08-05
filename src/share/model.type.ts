@@ -10,3 +10,7 @@ export interface ShopCreate {
   name: string;
   address: string;
 }
+
+export interface CitiesGet {
+  city: string;
+}
