@@ -3,14 +3,14 @@ import "../styles/Map.css";
 import modelType from "../model.type";
 
 interface ShopInfoProps {
-  shopDetail: modelType.ShopGet;
+  shopDetail: modelType.ShopAndMenu;
 }
 
 const Map: React.FC<ShopInfoProps> = ({ shopDetail }) => {
   const shoploc = {
-    name: shopDetail?.name,
-    lat: shopDetail?.latitude,
-    lng: shopDetail?.longtitude,
+    name: shopDetail?.shop?.name,
+    lat: shopDetail?.shop?.latitude,
+    lng: shopDetail?.shop?.longtitude,
   };
   return (
     <div className="map">
