@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Fragment } from "react";
 import modelType from "../model.type";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import "../styles/ShopInfo.css";
+
 interface ShopInfoProps {
   shopDetail: modelType.ShopAndMenu;
 }
@@ -14,10 +15,10 @@ const Shopinfo: React.FC<ShopInfoProps> = ({ shopDetail }) => {
   };
 
   return (
-    <div>
-      {store.name}
-      {store.address}
-    </div>
+    <>
+      <div className="storename">{store.name}</div>
+      <div className="address">{store.address}</div>
+    </>
   );
 };
 

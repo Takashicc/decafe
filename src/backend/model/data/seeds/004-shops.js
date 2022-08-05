@@ -9,7 +9,7 @@ exports.seed = async function (knex) {
     {
       id: 1,
       owner_id: 1,
-      name: "Jons Afternoon Tea",
+      name: "Jon's Afternoon Tea",
       address: "神奈川県藤沢市鵠沼藤が谷3-872-3",
       city: "Fuzisawa",
       latitude: 35.3239757,
@@ -18,7 +18,7 @@ exports.seed = async function (knex) {
     {
       id: 2,
       owner_id: 2,
-      name: "DrinkTomato 1号店",
+      name: "DrinkTomato",
       address: "神奈川县藤泽市天神町106-1214号",
       city: "Fuzisawa",
       latitude: 35.3782424,
@@ -27,7 +27,7 @@ exports.seed = async function (knex) {
     {
       id: 3,
       owner_id: 2,
-      name: "DrinkTomato 2号店",
+      name: "DrinkTomato 2",
       address: "神奈川县藤泽市大桐465-1159",
       city: "Fuzisawa",
       latitude: 35.3782411,
@@ -36,7 +36,7 @@ exports.seed = async function (knex) {
     {
       id: 4,
       owner_id: 3,
-      name: "TAKASHI 1号店",
+      name: "TAKASHI",
       address: "40 West Newton Street, Boston, MA 02116",
       city: "Boston",
       latitude: 42.339201,
@@ -54,7 +54,7 @@ exports.seed = async function (knex) {
     {
       id: 6,
       owner_id: 4,
-      name: "JulioCoffee 1号店",
+      name: "JulioCoffee",
       address: "大阪府堺市南区御池台3丁目1-18",
       city: "Osaka",
       latitude: 34.4638854,
