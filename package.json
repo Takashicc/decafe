@@ -68,6 +68,7 @@
   },
   "type": "commonjs",
   "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.8",
     "@types/validator": "^13.7.4",
     "nodemon": "^2.0.19",
     "webpack-dev-server": "^4.9.3"
