@@ -64,3 +64,20 @@ export async function getCities(): Promise<modelType.CitiesGet> {
 
   return cities;
 }
+
+/**
+ * Get all shop data.
+ *
+ * @returns Shop data find by id
+ */
+export async function getAllShops(): Promise<modelType.AllShopGet> {
+  let allShops: modelType.AllShopGet;
+
+  try {
+    allShops = await knex.select("*").from(TABLE_SHOPS);
+  } catch (error) {
+    throw error;
+  }
+
+  return allShops;
+}

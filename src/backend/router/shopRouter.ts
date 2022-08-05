@@ -24,6 +24,19 @@ const router = express.Router();
 //   }
 // });
 
+router.get("/shops", async (req, res) => {
+  let shops: modelType.AllShopGet;
+  try {
+    shops = await ShopRepository.getAllShops();
+  } catch (error) {
+    console.log(error);
+    res.status(500).send();
+    return;
+  }
+
+  return res.status(200).send(shops);
+});
+
 router.get("/shops/:id", async (req, res) => {
   let shop: modelType.ShopGet;
   try {
