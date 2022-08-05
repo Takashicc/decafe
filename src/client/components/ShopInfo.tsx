@@ -3,14 +3,14 @@ import { Fragment } from "react";
 import modelType from "../model.type";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 interface ShopInfoProps {
-  shopDetail: modelType.ShopGet;
+  shopDetail: modelType.ShopAndMenu;
 }
 
 const Shopinfo: React.FC<ShopInfoProps> = ({ shopDetail }) => {
   //example store
   const store = {
-    name: shopDetail?.name,
-    address: shopDetail?.address,
+    name: shopDetail?.shop?.name,
+    address: shopDetail?.shop?.address,
   };
 
   return (
