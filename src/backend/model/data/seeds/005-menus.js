@@ -11,5 +11,6 @@ exports.seed = async function (knex) {
     { id: 3, shop_id: 1, name: "Espresso", price: 250 },
     { id: 4, shop_id: 2, name: "Green Tea", price: 50 },
     { id: 5, shop_id: 3, name: "British Tea", price: 9800 },
+    { id: 6, shop_id: 4, name: "TAKASHI SPECIAL", price: 9800 },
   ]);
 };
