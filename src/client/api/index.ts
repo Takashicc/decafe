@@ -22,6 +22,22 @@ export const createShop = async (
 };
 
 /**
+ * Get all shop data from shops table.
+ *
+ * @returns All shop data
+ */
+export const findAllShops = async (): Promise<modelType.AllShopGet[]> => {
+  let shops: modelType.AllShopGet[];
+  try {
+    const response = await axios.get<modelType.AllShopGet[]>(`/api/v1/shops`);
+    shops = response.data;
+  } catch (error) {
+    throw error;
+  }
+  return shops;
+};
+
+/**
  * Find shop by id.
  *
  * @param id shop id
@@ -40,4 +56,20 @@ export const findShopAndMenuById = async (
     return shop;
   }
   return shop;
+};
+
+/**
+ * Get all cities data from shops table.
+ *
+ * @returns All cities
+ */
+export const findAllCities = async (): Promise<modelType.CitiesGet[]> => {
+  let cities: modelType.CitiesGet[];
+  try {
+    const response = await axios.get<modelType.CitiesGet[]>(`/api/v1/cities`);
+    cities = response.data;
+  } catch (error) {
+    throw error;
+  }
+  return cities;
 };

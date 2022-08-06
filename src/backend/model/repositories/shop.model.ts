@@ -49,3 +49,43 @@ export async function findShopById(id: number): Promise<modelType.ShopGet> {
 
   return shop;
 }
+
+/**
+ * Get all cities shop data.
+ *
+ * @returns Shop data find by id
+ */
+export async function findAllCities(): Promise<modelType.CitiesGet> {
+  let cities: modelType.CitiesGet;
+
+  try {
+    cities = await knex
+      .select("city")
+      .orderBy("city", "desc")
+      .from(TABLE_SHOPS);
+  } catch (error) {
+    throw error;
+  }
+
+  return cities;
+}
+
+/**
+ * Get all shop data.
+ *
+ * @returns Shop data find by id
+ */
+export async function findAllShops(): Promise<modelType.AllShopGet> {
+  let allShops: modelType.AllShopGet;
+
+  try {
+    allShops = await knex
+      .select("id", "name", "city", "address")
+      .orderBy("id")
+      .from(TABLE_SHOPS);
+  } catch (error) {
+    throw error;
+  }
+
+  return allShops;
+}

@@ -1,0 +1,56 @@
+.shopListWrapper {
+    margin-top: 1rem;
+    margin-left: 20rem;
+    margin-right: 20rem;
+}
+
+.shopListWrapper h2 {
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.cityName{
+    font-weight: bold;
+}
+
+.shopInfoWrapper {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 2rem 2rem 1rem 2rem;
+    background-color:aliceblue;
+    border-radius: 25px;
+    margin-bottom: 3rem;
+}
+
+.shopInfoWrapper a, a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.shopInfoWrapper a:hover {
+    color:brown;
+    text-decoration: none;
+}
+
+.shopInfo  {
+    align-content: flex-start;
+    padding-bottom: 1rem;
+    font-weight: bold;
+    border-top: solid 1px chocolate;
+    border-bottom: solid 1px chocolate;
+    padding-top: 1rem;
+}
+
+.imageWrapper img {
+    border: hidden;
+}
+
+.imageWrapper img {
+    width: 150px;
+    height: 150px;
+}
+
+.shopName {
+    font-size: 30px;
+}
