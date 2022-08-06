@@ -2,24 +2,15 @@ import knex from "../knexConfig";
 import { TABLE_MENUS } from "../const";
 import modelType from "../../model.type";
 
-/**
- * Insert data into shops table.
- *
- * @param shop Shop object
- * @returns Inserted data id
- */
-export async function createShop(shop: modelType.ShopCreate): Promise<number> {
-  let id: number;
-
-  try {
-    const rows = await knex(TABLE_MENUS).insert(shop, "id");
-    id = rows[0].id;
-  } catch (error) {
-    throw error;
-  }
-
-  return id;
-}
+// /**
+//  * ToDo:
+//  * Insert menu into menus table.
+//  *
+//  * @param shop Menu object
+//  * @returns Inserted data id
+//  */
+//
+// }
 
 /**
  * Find menu data by shop id.
@@ -39,6 +30,7 @@ export async function findMenuByShopId(
         price: "price",
       })
       .from(TABLE_MENUS)
+      .orderBy("name", "asc")
       .where({
         shop_id: shopid,
       });
