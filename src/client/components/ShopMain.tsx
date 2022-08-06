@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import modelType from "../model.type";
 import { findShopAndMenuById } from "../api";
 import Photoheader from "./PhotoHeader";
-import Shopinfo from "./ShopInfo";
 import Map from "./Map";
 import Menu from "./Menu";
 import { useParams } from "react-router-dom";
@@ -22,7 +21,6 @@ const ShopMain: React.FC = () => {
       }
       const numId: number = +id;
       const shop: modelType.ShopAndMenu = await findShopAndMenuById(numId);
-      console.log(shop);
       setShopDetail(shop);
       if (shop === undefined) {
         setNotFound(true);
@@ -34,14 +32,11 @@ const ShopMain: React.FC = () => {
 
   return (
     <div className="Shopmain">
-      <Photoheader />
-
-      <div className="shopDetail">
-        <Shopinfo shopDetail={shopDetail} />
-      </div>
-      <Map shopDetail={shopDetail} />
+      <Photoheader shopDetail={shopDetail} />
 
       <Menu shopDetail={shopDetail} />
+
+      <Map shopDetail={shopDetail} />
     </div>
   );
 };
