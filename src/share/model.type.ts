@@ -29,3 +29,12 @@ export interface SignUpOwner {
 export interface ErrorInfo {
   message: string;
 }
+
+export interface AuthStatus {
+  isAuthenticated: boolean;
+}
+
+export interface AuthCheck {
+  checked: boolean;
+  isAuthenticated: boolean;
+}
