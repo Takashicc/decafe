@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import "../styles/Image.css";
-import { BrowserRouter as Router } from "react-router-dom";
+import "../styles/PhotoHeader.css";
+import modelType from "../model.type";
 
 //open image in new tab
 const openInNewTab = (url: string): void => {
@@ -8,8 +7,12 @@ const openInNewTab = (url: string): void => {
   if (newWindow) newWindow.opener = null;
 };
 
-const Photoheader: React.FC = () => {
-  //image string to map
+interface ShopInfoProps {
+  shopDetail: modelType.ShopAndMenu;
+}
+
+const Photoheader: React.FC<ShopInfoProps> = ({ shopDetail }) => {
+  //image string example
   const images = [
     "images/1 (3).jpg",
     "images/2.jpg",
@@ -18,19 +21,26 @@ const Photoheader: React.FC = () => {
     "images/1 (4).jpg",
   ];
 
+  const store = {
+    name: shopDetail?.shop?.name,
+  };
+
   return (
     <div className="imagewrapper">
-      {images.map((image: string) => {
-        return (
-          <img
-            className="image"
-            src={`${image}`}
-            onClick={() => {
-              openInNewTab(`${image}`);
-            }}
-          />
-        );
-      })}
+      <div className="imagejoined">
+        {images.map((image: string) => {
+          return (
+            <img
+              className="image"
+              src={`${image}`}
+              onClick={() => {
+                openInNewTab(`${image}`);
+              }}
+            />
+          );
+        })}
+      </div>
+      <div className="storename">{store.name}</div>
     </div>
   );
 };
