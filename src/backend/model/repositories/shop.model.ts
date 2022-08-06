@@ -79,7 +79,7 @@ export async function findAllShops(): Promise<modelType.AllShopGet> {
   try {
     allShops = await knex
       .select("id", "name", "city", "address")
-      .orderBy("id")
+      .orderBy("city", "asc")
       .from(TABLE_SHOPS);
   } catch (error) {
     throw error;
