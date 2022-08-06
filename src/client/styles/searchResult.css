@@ -42,13 +42,19 @@
     padding-top: 1rem;
 }
 
-.imageWrapper img {
-    border: hidden;
+.imageWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    justify-content: space-between;
+    padding-top: 10px;
 }
 
 .imageWrapper img {
-    width: 150px;
-    height: 150px;
+    object-fit: cover;
+    width: 160px;
+    height: 160px;
+    border-radius: 10px;
 }
 
 .shopName {
