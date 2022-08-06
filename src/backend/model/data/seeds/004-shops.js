@@ -18,7 +18,7 @@ exports.seed = async function (knex) {
     {
       id: 2,
       owner_id: 2,
-      name: "DrinkTomato",
+      name: "DrinkTomato　本店",
       address: "神奈川县藤泽市天神町106-1214号",
       city: "Fuzisawa",
       latitude: 35.3782424,
@@ -27,7 +27,7 @@ exports.seed = async function (knex) {
     {
       id: 3,
       owner_id: 2,
-      name: "DrinkTomato 2",
+      name: "DrinkTomato 藤泽支店",
       address: "神奈川县藤泽市大桐465-1159",
       city: "Fuzisawa",
       latitude: 35.3782411,
