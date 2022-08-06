@@ -1,0 +1,31 @@
+.imagewrapper{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+
+}
+
+.image{
+    width: 400px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.imagejoined{
+    position: relative;
+}
+.storename{
+    font-family: 'Roboto';
+    color: white;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+   letter-spacing: 5px;
+   font-size: 60px;
+   -webkit-text-stroke: 1.11px black; /* stroke width and color */
+   color: rgb(255, 255, 255);
+   -webkit-font-smoothing: antialiased;
+   font-weight: bold;
+   text-shadow: 5px 5px #323232
+}

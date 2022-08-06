@@ -35,6 +35,8 @@ export async function findShopById(id: number): Promise<modelType.ShopGet> {
       .select({
         name: `${TABLE_SHOPS}.name`,
         address: `${TABLE_SHOPS}.address`,
+        latitude: `${TABLE_SHOPS}.latitude`,
+        longtitude: `${TABLE_SHOPS}.longtitude`,
       })
       .from(TABLE_SHOPS)
       .where({

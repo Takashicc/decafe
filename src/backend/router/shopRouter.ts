@@ -1,5 +1,5 @@
 import express from "express";
-import { ShopRepository } from "../model";
+import { MenuRepository, ShopRepository } from "../model";
 import modelType from "../model.type";
 import isNumeric from "validator/lib/isNumeric";
 
@@ -38,22 +38,30 @@ router.get("/shops", async (req, res) => {
 });
 
 router.get("/shops/:id", async (req, res) => {
+  let shopAndMenu: modelType.ShopAndMenu;
   let shop: modelType.ShopGet;
+  let menus: modelType.MenuGet[];
   try {
     if (!isNumeric(req.params.id)) {
       res.status(400).send();
       return;
     }
 
+    // Get the shop by id
+    // Get the menus by shop id
+    // Store the shop and menus to shopAndMenu varibale
+
     const id: number = +req.params.id;
     shop = await ShopRepository.findShopById(id);
+    menus = await MenuRepository.findMenuByShopId(id);
+    shopAndMenu = { shop, menus };
   } catch (error) {
     console.log(error);
     res.status(500).send();
     return;
   }
 
-  return res.status(200).send(shop);
+  return res.status(200).send(shopAndMenu);
 });
 
 router.get("/cities", async (req, res) => {
