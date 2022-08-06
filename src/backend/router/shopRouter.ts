@@ -24,6 +24,19 @@ const router = express.Router();
 //   }
 // });
 
+router.get("/shops", async (req, res) => {
+  let shops: modelType.AllShopGet;
+  try {
+    shops = await ShopRepository.findAllShops();
+  } catch (error) {
+    console.log(error);
+    res.status(500).send();
+    return;
+  }
+
+  return res.status(200).send(shops);
+});
+
 router.get("/shops/:id", async (req, res) => {
   let shop: modelType.ShopGet;
   try {
@@ -41,6 +54,19 @@ router.get("/shops/:id", async (req, res) => {
   }
 
   return res.status(200).send(shop);
+});
+
+router.get("/cities", async (req, res) => {
+  let cities: modelType.CitiesGet;
+  try {
+    cities = await ShopRepository.findAllCities();
+  } catch (error) {
+    console.log(error);
+    res.status(500).send();
+    return;
+  }
+
+  return res.status(200).send(cities);
 });
 
 export default router;
