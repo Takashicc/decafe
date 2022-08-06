@@ -31,5 +31,12 @@ exports.seed = async function (knex) {
     { id: 23, shop_id: 8, name: "Decaf Espresso", price: 550 },
     { id: 24, shop_id: 8, name: "Decaf Cappucino", price: 800 },
     { id: 25, shop_id: 8, name: "Decaf Julio", price: 999 },
+    { id: 26, shop_id: 1, name: "Jon's Overhauled Tea", price: 450 },
+    { id: 27, shop_id: 1, name: "Jon's Blend", price: 300 },
+    { id: 28, shop_id: 1, name: "Jon's Afternoon Tea", price: 500 },
+    { id: 29, shop_id: 1, name: "Jon's Evening Tea", price: 900 },
+    { id: 30, shop_id: 2, name: "Tasty Tomato Juice", price: 700 },
+    { id: 31, shop_id: 2, name: "Expensive Tomato Juice", price: 3400 },
+    { id: 32, shop_id: 2, name: "Gold-Plated Tomato Juice", price: 9500 },
   ]);
 };
