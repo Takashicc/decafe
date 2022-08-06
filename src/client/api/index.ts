@@ -26,7 +26,7 @@ export const createShop = async (
  *
  * @returns All shop data
  */
-export const getAllShops = async (): Promise<modelType.AllShopGet[]> => {
+export const findAllShops = async (): Promise<modelType.AllShopGet[]> => {
   let shops: modelType.AllShopGet[];
   try {
     const response = await axios.get<modelType.AllShopGet[]>(`/api/v1/shops`);
@@ -59,7 +59,7 @@ export const findShopById = async (id: number): Promise<modelType.ShopGet> => {
  *
  * @returns All cities
  */
-export const getCities = async (): Promise<modelType.CitiesGet[]> => {
+export const findAllCities = async (): Promise<modelType.CitiesGet[]> => {
   let cities: modelType.CitiesGet[];
   try {
     const response = await axios.get<modelType.CitiesGet[]>(`/api/v1/cities`);

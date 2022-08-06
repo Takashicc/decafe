@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
-import { getCities } from "../api";
+import { findAllCities } from "../api";
 import "../styles/searchbar.css";
 import { SearchbarOptions } from "./Home";
 
@@ -19,7 +19,7 @@ const Searchbar: React.FC<SearchbarProps> = ({
 
   useEffect(() => {
     (async () => {
-      const result = await getCities();
+      const result = await findAllCities();
       const cities: SearchbarOptions[] = result.map((e) => {
         return { label: e.city, value: e.city };
       });

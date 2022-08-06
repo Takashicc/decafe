@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { getAllShops } from "../api";
+import { findAllShops } from "../api";
 import { SearchbarOptions } from "./Home";
+import "../styles/searchResult.css";
 
 interface AllShopsInfo {
   id: number;
@@ -16,13 +17,13 @@ interface SearchResultProps {
 const SearchResult: React.FC<SearchResultProps> = ({ selectedOption }) => {
   const [allShops, setAllShops] = useState<AllShopsInfo[]>([]);
 
-  let display = allShops.map((shop) => {
+  let displayShops = allShops.map((shop) => {
     return (
       <div className="shopInfo">
         <Link to={"/shops/" + shop.id}>
-          Shop Name: {shop.name}
+          Shop Name: <span className="shopName">{shop.name}</span>
           <br></br>
-          Shop Address: {shop.address}
+          Shop Address: <span className="shopAddre">{shop.address}</span>
         </Link>
       </div>
     );
@@ -31,7 +32,7 @@ const SearchResult: React.FC<SearchResultProps> = ({ selectedOption }) => {
   //filter shops by city
   useEffect(() => {
     (async () => {
-      const result = await getAllShops();
+      const result = await findAllShops();
       const filteredShops: AllShopsInfo[] = result.filter((e) => {
         return e.city === selectedOption?.label;
       });
@@ -41,9 +42,10 @@ const SearchResult: React.FC<SearchResultProps> = ({ selectedOption }) => {
 
   return (
     <div className="shopListWrapper">
-      {" "}
-      <h2>Shops in {selectedOption?.label}</h2>
-      <div className="shopInfoWrapper">{display}</div>
+      <h2>
+        Shops in <span className="cityName">{selectedOption?.label}</span>
+      </h2>
+      <div className="shopInfoWrapper">{displayShops}</div>
     </div>
   );
 };

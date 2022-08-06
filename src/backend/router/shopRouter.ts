@@ -27,7 +27,7 @@ const router = express.Router();
 router.get("/shops", async (req, res) => {
   let shops: modelType.AllShopGet;
   try {
-    shops = await ShopRepository.getAllShops();
+    shops = await ShopRepository.findAllShops();
   } catch (error) {
     console.log(error);
     res.status(500).send();
@@ -59,7 +59,7 @@ router.get("/shops/:id", async (req, res) => {
 router.get("/cities", async (req, res) => {
   let cities: modelType.CitiesGet;
   try {
-    cities = await ShopRepository.getCities();
+    cities = await ShopRepository.findAllCities();
   } catch (error) {
     console.log(error);
     res.status(500).send();
