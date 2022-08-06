@@ -18,8 +18,11 @@ exports.seed = async function (knex) {
     {
       id: 2,
       owner_id: 2,
-      name: "Tom 1号店",
-      address: "奈良県大和郡山市東奈良口町749-11",
+      name: "DrinkTomato 本店",
+      city: "Boston",
+      address: "38 West Newton Street, Boston, MA 02116",
+      latitude: 42.3390094,
+      longtitude: -71.0741938,
     },
     {
       id: 3,
