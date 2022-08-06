@@ -11,8 +11,8 @@ const Menu: React.FC<ShopInfoProps> = ({ shopDetail }) => {
     <table className="menutable">
       Menu
       <tr>
-        <th>Drink</th>
-        <th>Price</th>
+        <th className="th">Drink</th>
+        <th className="th">Price</th>
       </tr>
       {menu?.map((singleMenu) => {
         return (
