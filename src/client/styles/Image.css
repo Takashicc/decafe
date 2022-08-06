@@ -1,0 +1,23 @@
+.imagewrapper{
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+
+}
+
+.image{
+    width: 400px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.Shopmain{
+  overflow: hidden;
+}
+
+.Shopmain::-webkit-scrollbar {
+    display: none;
+  }
