@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Header from "./Header";
 import Searchbar from "./Searchbar";
 import SearchResult from "./SearchResult";
