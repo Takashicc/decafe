@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { getAllShops } from "../api";
 import { SearchbarOptions } from "./Home";
 
 interface AllShopsInfo {
+  id: number;
   name: string;
   address: string;
 }
@@ -17,14 +19,14 @@ const SearchResult: React.FC<SearchResultProps> = ({ selectedOption }) => {
   let display = allShops.map((shop) => {
     return (
       <div className="shopInfo">
-        Shop Name: {shop.name}
-        <br></br>
-        Shop Address: {shop.address}
+        <Link to={"/shops/" + shop.id}>
+          Shop Name: {shop.name}
+          <br></br>
+          Shop Address: {shop.address}
+        </Link>
       </div>
     );
   });
-
-  console.log(allShops);
 
   //filter shops by city
   useEffect(() => {
@@ -35,7 +37,7 @@ const SearchResult: React.FC<SearchResultProps> = ({ selectedOption }) => {
       });
       setAllShops(filteredShops);
     })();
-  }, []);
+  }, allShops);
 
   return (
     <div className="shopListWrapper">
