@@ -38,8 +38,10 @@ const Searchbar: React.FC<SearchbarProps> = ({
         onChange={handleChange}
         options={options}
         placeholder="ex. Shinjuku"
-        backspaceRemovesValue
+        backspaceRemovesValue={true}
         isClearable
+        openMenuOnFocus
+        blurInputOnSelect
         escapeClearsValue
         openMenuOnClick={false}
         maxMenuHeight={200}
