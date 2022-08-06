@@ -1,6 +1,13 @@
 .map {
-    margin-left: 30%;
-    position: relative;
+  margin-right: 200px;
+  display: flex;
   }
 
-  
+.mapwrapper {
+  float:right;
+}
+
+.address {
+  margin: auto;
+  display: flex;
+      }
