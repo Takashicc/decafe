@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "../styles/Login.css";
 import { useForm } from "react-hook-form";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import Header from "./Header";
+import { Link } from "react-router-dom";
 
 interface FormValue {
   username: string;
@@ -52,10 +51,14 @@ const Login: React.FC = () => {
 
   return (
     <>
-      <Header />
       <div className="login">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div> LOG IN!</div>
+          <div className="logocenter">
+            <Link to="/" reloadDocument>
+              <img src="images/decafelogo.png" className="logo"></img>
+            </Link>
+          </div>
+          <div> Log in</div>
           <div className="input-container">
             <label>Username </label>
             <input
