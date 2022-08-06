@@ -22,6 +22,7 @@ const ShopMain: React.FC = () => {
       }
       const numId: number = +id;
       const shop: modelType.ShopAndMenu = await findShopAndMenuById(numId);
+      console.log(shop);
       setShopDetail(shop);
       if (shop === undefined) {
         setNotFound(true);

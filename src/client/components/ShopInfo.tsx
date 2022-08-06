@@ -8,7 +8,6 @@ interface ShopInfoProps {
 }
 
 const Shopinfo: React.FC<ShopInfoProps> = ({ shopDetail }) => {
-  //example store
   const store = {
     name: shopDetail?.shop?.name,
     address: shopDetail?.shop?.address,
