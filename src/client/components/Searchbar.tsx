@@ -3,6 +3,7 @@ import Select from "react-select";
 import { findAllCities } from "../api";
 import "../styles/searchbar.css";
 import { SearchbarOptions } from "./Home";
+import { Link } from "react-router-dom";
 
 interface SearchbarProps {
   selectedOption: SearchbarOptions | null;
@@ -33,6 +34,11 @@ const Searchbar: React.FC<SearchbarProps> = ({
 
   return (
     <div className="searchbarWapper">
+      <div className="logocenter">
+        <Link to="/" reloadDocument>
+          <img src="images/decafelogo.png" className="logo"></img>
+        </Link>
+      </div>
       <Select
         value={selectedOption}
         onChange={handleChange}
