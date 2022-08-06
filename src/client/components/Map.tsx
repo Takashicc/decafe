@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "../styles/Map.css";
 import modelType from "../model.type";
 
@@ -8,18 +7,22 @@ interface ShopInfoProps {
 
 const Map: React.FC<ShopInfoProps> = ({ shopDetail }) => {
   const shoploc = {
-    name: shopDetail?.shop?.name,
     lat: shopDetail?.shop?.latitude,
     lng: shopDetail?.shop?.longtitude,
+    address: shopDetail?.shop?.address,
   };
   return (
-    <div className="map">
-      <iframe
-        src={`https://maps.google.com/maps?q=${shoploc.lat}, ${shoploc.lng}&z=15&output=embed`}
-        width="350"
-        height="350"
-        loading="lazy"
-      ></iframe>
+    <div className="mapwrapper">
+      Location
+      <div className="map">
+        <iframe
+          src={`https://maps.google.com/maps?q=${shoploc.lat}, ${shoploc.lng}&z=15&output=embed`}
+          width="250"
+          height="250"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <div className="address">{shoploc.address}</div>
     </div>
   );
 };
