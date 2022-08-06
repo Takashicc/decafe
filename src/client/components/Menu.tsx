@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import modelType from "../model.type";
+import "../styles/Menu.css";
 
 interface ShopInfoProps {
   shopDetail: modelType.ShopAndMenu;
@@ -8,18 +8,23 @@ interface ShopInfoProps {
 const Menu: React.FC<ShopInfoProps> = ({ shopDetail }) => {
   const menu = shopDetail?.menus;
   return (
-    <div>
+    <table className="menutable">
+      Menu
+      <tr>
+        <th>Drink</th>
+        <th>Price</th>
+      </tr>
       {menu?.map((singleMenu) => {
         return (
           <>
-            <div>
-              {" "}
-              {singleMenu.name} {singleMenu.price}
-            </div>
+            <tr>
+              <td>{singleMenu.name}</td>
+              <td>{singleMenu.price}</td>
+            </tr>
           </>
         );
       })}
-    </div>
+    </table>
   );
 };
 
