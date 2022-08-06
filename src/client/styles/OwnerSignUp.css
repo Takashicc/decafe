@@ -1,0 +1,36 @@
+.sign-up {
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  height: 100vh;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background-color: #f8f9fd;
+}
+
+#name {
+  height: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+#password {
+  margin-left: 3px;
+  height: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+#submit-button {
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  background: #01d28e;
+  border: 1px solid #01d28e;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.error-message {
+  color: red;
+}

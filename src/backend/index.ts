@@ -1,9 +1,11 @@
 import path from "path";
 import express from "express";
 import router from "./router";
+import cookieParser from "cookie-parser";
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../client")));
 
 app.use("/api/v1", router);

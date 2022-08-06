@@ -18,6 +18,34 @@ export interface ShopCreate {
   address: string;
 }
 
+export interface Owner {
+  name: string;
+  password: string;
+}
+
+export interface LoginOwner {
+  name: string;
+  password: string;
+}
+
+export interface SignUpOwner {
+  name: string;
+  password: string;
+}
+
+export interface ErrorInfo {
+  message: string;
+}
+
+export interface AuthStatus {
+  isAuthenticated: boolean;
+}
+
+export interface AuthCheck {
+  checked: boolean;
+  isAuthenticated: boolean;
+}
+
 export type ShopAndMenu =
   | {
       shop: ShopGet;
