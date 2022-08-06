@@ -21,9 +21,17 @@ const SearchResult: React.FC<SearchResultProps> = ({ selectedOption }) => {
     return (
       <div className="shopInfo">
         <Link to={"/shops/" + shop.id}>
-          Shop Name: <span className="shopName">{shop.name}</span>
-          <br></br>
-          Shop Address: <span className="shopAddre">{shop.address}</span>
+          <div className="shopInfoText">
+            <span className="shopName">{shop.name}</span>
+            <br></br>
+            Address: <span className="shopAddress">{shop.address}</span>
+            <div className="imageWrapper">
+              <img
+                src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                alt="cute coffee"
+              />
+            </div>
+          </div>
         </Link>
       </div>
     );
@@ -46,6 +54,7 @@ const SearchResult: React.FC<SearchResultProps> = ({ selectedOption }) => {
         Shops in <span className="cityName">{selectedOption?.label}</span>
       </h2>
       <div className="shopInfoWrapper">{displayShops}</div>
+      <div className="cafeShopPicWrapper"></div>
     </div>
   );
 };
