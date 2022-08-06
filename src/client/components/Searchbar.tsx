@@ -48,6 +48,7 @@ const Searchbar: React.FC<SearchbarProps> = ({
         isClearable
         escapeClearsValue
         openMenuOnClick={false}
+        maxMenuHeight={200}
         components={{
           DropdownIndicator: () => null,
           IndicatorSeparator: () => null,

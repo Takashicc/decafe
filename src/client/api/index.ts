@@ -73,3 +73,58 @@ export const findAllCities = async (): Promise<modelType.CitiesGet[]> => {
   }
   return cities;
 };
+
+/**
+ * Send data to the server and verify the owner user exist.
+ *
+ * @param user User object
+ * @returns ErrorInfo object
+ */
+export const ownerLogin = async (
+  user: modelType.LoginOwner
+): Promise<modelType.ErrorInfo> => {
+  const response = await axios.post<modelType.ErrorInfo>(
+    "/api/v1/owners/login",
+    user
+  );
+
+  return response.data;
+};
+
+/**
+ * Owner logout.
+ */
+export const ownerLogout = async (): Promise<void> => {
+  await axios.post("/api/v1/owners/logout");
+  return;
+};
+
+/**
+ * Send data to the server and sign up a new owner user.
+ *
+ * @param user User object
+ * @returns ErrorInfo object
+ */
+export const ownersSignUp = async (
+  user: modelType.SignUpOwner
+): Promise<modelType.ErrorInfo> => {
+  const response = await axios.post<modelType.ErrorInfo>(
+    "/api/v1/owners/new",
+    user
+  );
+
+  return response.data;
+};
+
+/**
+ * Verify the JsonWebToken and check is authenticated or not.
+ *
+ * @returns Authenticated or not
+ */
+export const jwtIsAuthenticated = async (): Promise<boolean> => {
+  const response = await axios.get<modelType.AuthStatus>(
+    "/api/v1/tokenVerification"
+  );
+
+  return response.data.isAuthenticated;
+};
