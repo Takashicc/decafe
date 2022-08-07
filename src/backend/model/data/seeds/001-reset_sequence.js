@@ -6,6 +6,6 @@ const TABLES = ["owners", "shops", "menus"];
  */
 exports.seed = async function (knex) {
   for (let table of TABLES) {
-    await knex.raw(`ALTER SEQUENCE ${table}_id_seq RESTART WITH 1`);
+    await knex.raw(`ALTER SEQUENCE ${table}_id_seq RESTART WITH 100`);
   }
 };
