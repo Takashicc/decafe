@@ -60,6 +60,7 @@ export async function findAllCities(): Promise<modelType.CitiesGet> {
     cities = await knex
       .select("city")
       .orderBy("city", "desc")
+      .distinct()
       .from(TABLE_SHOPS);
   } catch (error) {
     throw error;
