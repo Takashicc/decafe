@@ -20,9 +20,12 @@ const Searchbar: React.FC<SearchbarProps> = ({
 
   useEffect(() => {
     (async () => {
-      const result = await findAllCities();
+      const result = await findAllUniqueCities();
       const cities: SearchbarOptions[] = result.map((e) => {
-        return { label: e.city, value: e.city };
+        return {
+          label: e.city,
+          value: e.city,
+        };
       });
       setOptions(cities);
     })();
@@ -43,7 +46,7 @@ const Searchbar: React.FC<SearchbarProps> = ({
         value={selectedOption}
         onChange={handleChange}
         options={options}
-        placeholder="ex. Shinjuku"
+        placeholder="ex. Fujisawa"
         backspaceRemovesValue
         isClearable
         openMenuOnFocus
