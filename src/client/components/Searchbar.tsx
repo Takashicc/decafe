@@ -1,4 +1,4 @@
-import React, { LabelHTMLAttributes, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { findAllUniqueCities } from "../api";
 import "../styles/searchbar.css";
@@ -46,8 +46,8 @@ const Searchbar: React.FC<SearchbarProps> = ({
         value={selectedOption}
         onChange={handleChange}
         options={options}
-        placeholder="ex. Fujisawa"
-        backspaceRemovesValue
+        placeholder="ex. Fuzisawa"
+        backspaceRemovesValue={true}
         isClearable
         openMenuOnFocus
         blurInputOnSelect
