@@ -4,22 +4,12 @@ import "../styles/header.css";
 const Header = () => {
   return (
     <div className="header">
-      <Link to="/" reloadDocument>
-        <div className="picWrapper">
-          <img
-            className="logoPic"
-            width="50"
-            src="https://i.im.ge/2022/08/03/FCRHSS.logo-cafe.jpg"
-            alt="logo cafe"
-          />
-          <div className="decafeText">Decafé</div>
-        </div>
-      </Link>
+      <Link to="/" reloadDocument></Link>
       <div className="shopLinkWrapper">
-        <Link to="/owners/login">Shop Login</Link>
+        <Link to="/owners/login">Cafe Owners</Link>
       </div>
       <div className="shopLinkWrapper">
-        <Link to="/owners/logout">Shop Logout</Link>
+        <Link to="/owners/logout">Cafe Owners Logout</Link>
       </div>
       <div className="shopLinkWrapper">
         <Link to="/shops/new">Create shop</Link>

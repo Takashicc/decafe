@@ -1,7 +1,21 @@
 .searchbarWapper {
-    background-color:antiquewhite;
+    margin: auto;
+    background-color:rgb(255, 255, 255);
     align-items: center;
     padding-top: 2rem;
     padding-left: 20rem;
     padding-right: 20rem;
 }
+
+.logocenter{
+    display:flex;
+    justify-content: center;
+}
+
+.logo {
+    width: 250px;
+}
+
+.ownerlogo{
+    width: 300px;
+  }
