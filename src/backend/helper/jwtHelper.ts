@@ -2,6 +2,10 @@ import { CookieOptions } from "express";
 import * as jwt from "jsonwebtoken";
 import ms from "ms";
 
+interface DecodedPayload {
+  owner_id: number;
+}
+
 export class jwtHelper {
   private static SECRET_KEY: jwt.Secret = process.env.SECRET_KEY || "#0sdi0XSd";
 
@@ -10,8 +14,10 @@ export class jwtHelper {
    *
    * @returns JsonWebToken string
    */
-  public static createToken(): string {
-    const payload = {};
+  public static createToken(owner_id: number): string {
+    const payload = {
+      owner_id,
+    };
     const options: jwt.SignOptions = {
       expiresIn: "1d",
     };
@@ -25,10 +31,10 @@ export class jwtHelper {
    * @param token JsonWebToken string
    * @returns Decoded payload
    */
-  public static verifyToken(token: string): string | jwt.JwtPayload {
+  public static verifyToken(token: string): DecodedPayload {
     try {
       const decoded = jwt.verify(token, this.SECRET_KEY);
-      return decoded;
+      return decoded as DecodedPayload;
     } catch (error) {
       throw error;
     }

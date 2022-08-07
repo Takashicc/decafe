@@ -25,7 +25,7 @@ router.post("/owners/login", async (req, res) => {
       throw new UsernameOrPasswordInvalidError();
     }
 
-    const jwtToken: string = jwtHelper.createToken();
+    const jwtToken: string = jwtHelper.createToken(result.id!);
     const cookieOptions: CookieOptions = jwtHelper.getCookieOptions();
 
     res.status(200).cookie("jwtToken", jwtToken, cookieOptions).send();

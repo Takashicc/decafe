@@ -28,9 +28,12 @@ router.post("/owners/new", async (req, res) => {
       throw new HashFailedError();
     }
 
-    await OwnerRepository.create({ name: user.name, password: hashPassword });
+    const owner_id = await OwnerRepository.create({
+      name: user.name,
+      password: hashPassword,
+    });
 
-    const jwtToken = jwtHelper.createToken();
+    const jwtToken = jwtHelper.createToken(owner_id);
     const cookieOptions: CookieOptions = jwtHelper.getCookieOptions();
     return res.status(200).cookie("jwtToken", jwtToken, cookieOptions).send();
   } catch (error) {

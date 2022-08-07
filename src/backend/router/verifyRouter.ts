@@ -1,5 +1,4 @@
 import express, { CookieOptions } from "express";
-import { JwtPayload } from "jsonwebtoken";
 import { jwtHelper } from "../helper/jwtHelper";
 import modelType from "../model.type";
 
@@ -15,12 +14,12 @@ router.get("/tokenVerification", (req, res) => {
 
   try {
     const token: string = req.cookies.jwtToken;
-    const decode: string | JwtPayload = jwtHelper.verifyToken(token);
+    const decode = jwtHelper.verifyToken(token);
     if (!decode) {
       throw new Error();
     }
 
-    const newToken: string = jwtHelper.createToken();
+    const newToken: string = jwtHelper.createToken(decode.owner_id);
     const cookieOptions: CookieOptions = jwtHelper.getCookieOptions();
     const authStatus: modelType.AuthStatus = {
       isAuthenticated: true,
@@ -31,6 +30,26 @@ router.get("/tokenVerification", (req, res) => {
       .send(authStatus);
   } catch (error) {
     res.status(500).send();
+  }
+});
+
+router.get("/cookie/id", (req, res) => {
+  try {
+    if (!req.cookies.jwtToken) {
+      throw new Error();
+    }
+
+    const token: string = req.cookies.jwtToken;
+    const decode = jwtHelper.verifyToken(token);
+    if (!decode?.owner_id) {
+      throw new Error();
+    }
+
+    const owner_id = decode.owner_id;
+    return res.status(200).send({ owner_id });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send();
   }
 });
 
