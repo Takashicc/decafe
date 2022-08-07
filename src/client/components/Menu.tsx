@@ -8,23 +8,20 @@ interface ShopInfoProps {
 const Menu: React.FC<ShopInfoProps> = ({ shopDetail }) => {
   const menu = shopDetail?.menus;
   return (
-    <table className="menutable">
-      Menu
-      <tr>
-        <th className="th">Drink</th>
-        <th className="th">Price</th>
-      </tr>
+    <ul className="menutable">
+      <li className="list">
+        <span className="drinktitle">Drink</span>
+        <span className="drinkpricetitle">Price</span>
+      </li>
       {menu?.map((singleMenu) => {
         return (
-          <>
-            <tr>
-              <td>{singleMenu.name}</td>
-              <td>{singleMenu.price}</td>
-            </tr>
-          </>
+          <li className="list">
+            <span>{singleMenu.name}</span>
+            <span className="drinkprice">{singleMenu.price}</span>
+          </li>
         );
       })}
-    </table>
+    </ul>
   );
 };
 

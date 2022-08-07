@@ -28,7 +28,7 @@ const OwnerSignUp: React.FC = () => {
   return (
     <div className="sign-up">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div> SIGN UP!</div>
+        <div> Sign up!</div>
         <div className="error-message">{message}</div>
         <div>
           <label>Username </label>

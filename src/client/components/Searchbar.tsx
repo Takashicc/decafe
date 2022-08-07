@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { LabelHTMLAttributes, useEffect, useState } from "react";
 import Select from "react-select";
 import { findAllUniqueCities } from "../api";
 import "../styles/searchbar.css";
 import { SearchbarOptions } from "./Home";
+import { Link } from "react-router-dom";
 
 interface SearchbarProps {
   selectedOption: SearchbarOptions | null;
@@ -36,12 +37,17 @@ const Searchbar: React.FC<SearchbarProps> = ({
 
   return (
     <div className="searchbarWapper">
+      <div className="logocenter">
+        <Link to="/" reloadDocument>
+          <img src="images/decafelogo.png" className="logo"></img>
+        </Link>
+      </div>
       <Select
         value={selectedOption}
         onChange={handleChange}
         options={options}
-        placeholder="ex. Shinjuku"
-        backspaceRemovesValue={true}
+        placeholder="ex. Fujisawa"
+        backspaceRemovesValue
         isClearable
         openMenuOnFocus
         blurInputOnSelect
