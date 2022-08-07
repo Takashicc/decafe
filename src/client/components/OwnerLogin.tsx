@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ownerLogin } from "../api";
 import modelType from "../model.type";
 import { useState } from "react";
-import Header from "./Header";
+import OwnerHeader from "./OwnerHeader";
 
 const OwnerLogin: React.FC = () => {
   const {
@@ -28,10 +28,16 @@ const OwnerLogin: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <OwnerHeader />
+
       <div className="login">
+        <div className="logocenter">
+          <Link to="/" reloadDocument>
+            <img src="images/decafeowner.png" className="ownerlogo"></img>
+          </Link>
+        </div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div> LOG IN!</div>
+          <div className="logintitle"> Login </div>
           <div className="error-message">{message}</div>
           <div>
             <label>Username </label>
