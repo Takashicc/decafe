@@ -33,7 +33,7 @@ const OwnerLogin: React.FC = () => {
       <div className="login">
         <div className="logocenter">
           <Link to="/" reloadDocument>
-            <img src="images/decafeowner.png" className="ownerlogo"></img>
+            <img src="/images/decafeowner.png" className="ownerlogo"></img>
           </Link>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
