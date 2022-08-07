@@ -8,7 +8,7 @@ import modelType from "../../model.type";
  * @param shop Shop object
  * @returns Inserted data id
  */
-export async function createShop(shop: modelType.ShopCreate): Promise<number> {
+export async function create(shop: modelType.ShopCreate): Promise<number> {
   let id: number;
 
   try {
