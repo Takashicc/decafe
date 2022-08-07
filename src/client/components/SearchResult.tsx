@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { findAllShops } from "../api";
 import { SearchbarOptions } from "./Home";
 import "../styles/searchResult.css";
@@ -46,7 +46,7 @@ const SearchResult: React.FC<SearchResultProps> = ({ selectedOption }) => {
       });
       setAllShops(filteredShops);
     })();
-  }, allShops);
+  }, [allShops, selectedOption]);
 
   return (
     <div className="shopListWrapper">
