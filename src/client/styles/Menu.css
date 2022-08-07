@@ -8,7 +8,7 @@
     font-family: "IM Fell English SC";
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    margin-left: 200px;
+    margin-left: 300px;
     float: left;
     letter-spacing: 1px;
   }
@@ -16,7 +16,7 @@
 
 .list {
     display:flex;
-    justify-content:flex-start; /*shrink towards text*/
+    justify-content:flex-start;
     color:currentColor;
     text-decoration:none;
     padding:3px;
@@ -35,7 +35,7 @@
   order:1;
 }
 
-.list::after { /* item ids */
+.list::after { 
   counter-increment:menu;
   content:counters(menu, ".");
   flex:0 0 auto;
