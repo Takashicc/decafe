@@ -13,6 +13,9 @@
     letter-spacing: 1px;
   }
 
+.menuTop {
+  font-size: 40px;
+}
 
 .list {
     display:flex;

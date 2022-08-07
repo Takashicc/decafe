@@ -46,7 +46,7 @@ const Searchbar: React.FC<SearchbarProps> = ({
         value={selectedOption}
         onChange={handleChange}
         options={options}
-        placeholder="ex. Shinjuku"
+        placeholder="ex. Fuzisawa"
         backspaceRemovesValue={true}
         isClearable
         openMenuOnFocus

@@ -13,7 +13,7 @@ const Map: React.FC<ShopInfoProps> = ({ shopDetail }) => {
   };
   return (
     <div className="mapwrapper">
-      Location
+      <span className="location">Location</span>
       <div className="map">
         <iframe
           src={`https://maps.google.com/maps?q=${shoploc.lat}, ${shoploc.lng}&z=15&output=embed`}
