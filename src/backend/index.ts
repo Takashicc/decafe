@@ -6,6 +6,8 @@ import cookieParser from "cookie-parser";
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+app.use("/images", express.static("public/images"));
+app.use("/shops/images", express.static("public/shops/images"));
 app.use(express.static(path.join(__dirname, "../client")));
 
 app.use("/api/v1", router);
