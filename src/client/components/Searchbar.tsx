@@ -22,11 +22,17 @@ const Searchbar: React.FC<SearchbarProps> = ({
       const result = await findAllShops();
       const cities: SearchbarOptions[] = result.map((e) => {
         return {
-          label: e.city + ", " + e.name + ", " + e.address,
+          label: e.city,
           value: e.city,
         };
       });
-      setOptions(cities);
+      const filteredCities = cities.filter(
+        (elem, index, self) =>
+          self.findIndex((t) => {
+            return t.label === elem.label && t.value === elem.value;
+          }) === index
+      );
+      setOptions(filteredCities);
     })();
   }, []);
 
