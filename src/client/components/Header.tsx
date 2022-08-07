@@ -16,7 +16,13 @@ const Header = () => {
         </div>
       </Link>
       <div className="shopLinkWrapper">
-        <Link to="/login">Shop Login</Link>
+        <Link to="/owners/login">Shop Login</Link>
+      </div>
+      <div className="shopLinkWrapper">
+        <Link to="/owners/logout">Shop Logout</Link>
+      </div>
+      <div className="shopLinkWrapper">
+        <Link to="/shops/new">Create shop</Link>
       </div>
     </div>
   );
