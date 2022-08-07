@@ -45,6 +45,7 @@ export async function findOneByName(
 
     const owner = await knex
       .select<modelType.Owner>({
+        id: "id",
         name: "name",
         password: "password",
       })
@@ -67,10 +68,13 @@ export async function findOneByName(
  *
  * @param owner Owner object
  */
-export async function create(owner: modelType.Owner): Promise<void> {
+export async function create(owner: modelType.Owner): Promise<number> {
+  let owner_id: number;
   try {
-    await knex(TABLE_OWNERS).insert(owner);
+    const rows = await knex(TABLE_OWNERS).insert(owner, "id");
+    owner_id = rows[0].id;
   } catch (error) {
     throw error;
   }
+  return owner_id;
 }

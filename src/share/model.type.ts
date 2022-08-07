@@ -16,9 +16,19 @@ export interface ShopCreate {
   owner_id: number;
   name: string;
   address: string;
+  city: string;
+  latitude: number;
+  longtitude: number;
+}
+
+export interface MenuCreate {
+  shop_id: number;
+  name: string;
+  price: number;
 }
 
 export interface Owner {
+  id?: number;
   name: string;
   password: string;
 }
