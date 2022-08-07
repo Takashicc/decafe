@@ -10,15 +10,37 @@ import modelType from "../model.type";
 export const createShop = async (
   shop: modelType.ShopCreate
 ): Promise<number> => {
-  let id: number;
+  let shop_id: number;
   try {
-    const response = await axios.post<number>(`/api/v1/shops`, shop);
-    id = response.data;
+    const response = await axios.post<{ shop_id: number }>(
+      `/api/v1/shops/new`,
+      shop
+    );
+    shop_id = response.data.shop_id;
   } catch (error) {
     throw error;
   }
 
-  return id;
+  return shop_id;
+};
+
+/**
+ *
+ * @param menus Array of menu object
+ * @returns Array of inserted menu id
+ */
+export const createMenus = async (
+  menus: modelType.MenuCreate[]
+): Promise<number[]> => {
+  let menu_ids: number[];
+  try {
+    const response = await axios.post<number[]>(`/api/v1/menus/new`, menus);
+    menu_ids = response.data;
+  } catch (error) {
+    throw error;
+  }
+
+  return menu_ids;
 };
 
 /**
@@ -127,4 +149,15 @@ export const jwtIsAuthenticated = async (): Promise<boolean> => {
   );
 
   return response.data.isAuthenticated;
+};
+
+/**
+ * Get owner id from decoded cookie.
+ *
+ * @returns Owner id
+ */
+export const decodeOwnerId = async (): Promise<number> => {
+  const response = await axios.get("/api/v1/cookie/id");
+
+  return response.data.owner_id;
 };
