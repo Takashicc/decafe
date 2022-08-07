@@ -63,7 +63,7 @@ export const findShopAndMenuById = async (
  *
  * @returns All cities
  */
-export const findAllCities = async (): Promise<modelType.CitiesGet[]> => {
+export const findAllUniqueCities = async (): Promise<modelType.CitiesGet[]> => {
   let cities: modelType.CitiesGet[];
   try {
     const response = await axios.get<modelType.CitiesGet[]>(`/api/v1/cities`);

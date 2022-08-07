@@ -1,6 +1,6 @@
 import React, { LabelHTMLAttributes, useEffect, useState } from "react";
 import Select from "react-select";
-import { findAllCities } from "../api";
+import { findAllUniqueCities } from "../api";
 import "../styles/searchbar.css";
 import { SearchbarOptions } from "./Home";
 import { Link } from "react-router-dom";
@@ -20,18 +20,10 @@ const Searchbar: React.FC<SearchbarProps> = ({
 
   useEffect(() => {
     (async () => {
-      let dupe: string;
       const result = await findAllCities();
-      const cities: SearchbarOptions[] = result.reduce(
-        (result: SearchbarOptions[], e) => {
-          if (e.city !== dupe) {
-            dupe = e.city;
-            result.push({ label: e.city, value: e.city });
-          }
-          return result;
-        },
-        []
-      );
+      const cities: SearchbarOptions[] = result.map((e) => {
+        return { label: e.city, value: e.city };
+      });
       setOptions(cities);
     })();
   }, []);
@@ -51,9 +43,11 @@ const Searchbar: React.FC<SearchbarProps> = ({
         value={selectedOption}
         onChange={handleChange}
         options={options}
-        placeholder="ex. Fujisawa"
+        placeholder="ex. Shinjuku"
         backspaceRemovesValue
         isClearable
+        openMenuOnFocus
+        blurInputOnSelect
         escapeClearsValue
         openMenuOnClick={false}
         maxMenuHeight={200}

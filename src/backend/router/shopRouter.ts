@@ -67,7 +67,7 @@ router.get("/shops/:id", async (req, res) => {
 router.get("/cities", async (req, res) => {
   let cities: modelType.CitiesGet;
   try {
-    cities = await ShopRepository.findAllCities();
+    cities = await ShopRepository.findAllUniqueCities();
   } catch (error) {
     console.log(error);
     res.status(500).send();

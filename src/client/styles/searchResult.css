@@ -56,8 +56,10 @@
 }
 
 .imageWrapper img {
-    width: 150px;
-    height: 150px;
+    object-fit: cover;
+    width: 160px;
+    height: 160px;
+    border-radius: 10px;
 }
 
 .shopName {
