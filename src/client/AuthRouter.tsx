@@ -17,7 +17,7 @@ export const PrivateRoute: React.FC<Props> = ({ children }) => {
     return <>{children}</>;
   }
 
-  return <Navigate to="/" />;
+  return <Navigate to="/owners/login" />;
 };
 
 export const GuestRoute: React.FC<Props> = ({ children }) => {
