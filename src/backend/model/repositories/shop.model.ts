@@ -55,13 +55,14 @@ export async function findShopById(id: number): Promise<modelType.ShopGet> {
  *
  * @returns Shop data find by id
  */
-export async function findAllCities(): Promise<modelType.CitiesGet> {
+export async function findAllUniqueCities(): Promise<modelType.CitiesGet> {
   let cities: modelType.CitiesGet;
 
   try {
     cities = await knex
       .select("city")
-      .orderBy("city", "desc")
+      .orderBy("city", "asc")
+      .distinct()
       .from(TABLE_SHOPS);
   } catch (error) {
     throw error;
