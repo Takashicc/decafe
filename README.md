@@ -170,14 +170,14 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/Takashicc/decafe.svg?style=for-the-badge
 [contributors-url]: https://github.com/Takashicc/decafe/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/Takashicc/decafe.svg?style=for-the-badge
 [forks-url]: https://github.com/Takashicc/decafe/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/Takashicc/decafe.svg?style=for-the-badge
 [stars-url]: https://github.com/Takashicc/decafe/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/Takashicc/decafe.svg?style=for-the-badge
 [issues-url]: https://github.com/Takashicc/decafe/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/Takashicc/decafe.svg?style=for-the-badge
 [license-url]: https://github.com/Takashicc/decafe/blob/master/LICENSE.txt
 [product-screenshot]: docs/images/decafe_screenshot.png
