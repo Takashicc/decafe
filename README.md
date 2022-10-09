@@ -1,13 +1,10 @@
 <a name="readme-top"></a>
 
-
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -30,8 +27,6 @@
     <a href="https://github.com/Takashicc/decafe/issues">Request Feature</a>
   </p>
 </div>
-
-
 
 <details>
   <summary>Table of Contents</summary>
@@ -58,8 +53,6 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -68,6 +61,7 @@
 There are many apps to find locations and coffee shops out there, However, none of them can specifically find decaf coffee shops.
 deCafé is the only App that can provide you with a way to find decaf.
 Here is why:
+
 - Users should an easier time finding theirs favorite cafes that serves decaf on its menu
 - A unique way to connect decaf coffee shops owners to customers
 - Because decaf is love, decaf is life
@@ -75,16 +69,12 @@ Although many features can still be implemented in the future, we believe that i
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 ### Built With
 
-* [![React][React.js]][React-url]
+- [![React][React.js]][React-url]
 <!-- * [![Express][React.js]][Express-url] -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -96,7 +86,8 @@ To get a local copy up and running follow these simple example steps.
 
 Install postgres and create database named `decafe`
 
-* postgres
+- postgres
+
   ```sh
   createdb decafe
   ```
@@ -104,44 +95,51 @@ Install postgres and create database named `decafe`
 ### Installation
 
 1. Clone the repo
+
    ```sh
    git clone https://github.com/Takashicc/decafe.git
    ```
+
 2. Install NPM packages
+
    ```sh
    npm install
    ```
+
 3. Create tables
+
     ```sh
     npm run migrate
     ```
+
 4. Seed data
+
     ```sh
     npm run seed
     ```
+
 5. Run server
    - For developing
         After running the below command, Go to `localhost:3000`.
+
         ```sh
         npm run dev
         ```
+
    - For production
         After running the below command, Go to `localhost:8080`.
+
         ```sh
         npm run prod
         ```
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 ## Roadmap
 
 See the [open issues](https://github.com/Takashicc/decafe/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -158,8 +156,6 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- LICENSE -->
 ## License
@@ -180,4 +176,3 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [issues-url]: https://github.com/Takashicc/decafe/issues
 [license-shield]: https://img.shields.io/github/license/Takashicc/decafe.svg?style=for-the-badge
 [license-url]: https://github.com/Takashicc/decafe/blob/master/LICENSE.txt
-[product-screenshot]: docs/images/decafe_screenshot.png
