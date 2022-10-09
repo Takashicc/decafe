@@ -1,0 +1,46 @@
+{
+  "name": "decafe",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/js-cookie": "^3.0.2",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/validator": "^13.7.4",
+    "axios": "^0.27.2",
+    "js-cookie": "^3.0.1",
+    "middleware-axios": "^2.1.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.34.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "react-select": "^5.4.0",
+    "typescript": "^4.7.4",
+    "validator": "^13.7.0"
+  },
+  "scripts": {
+    "dev": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "type": "commonjs"
+}
