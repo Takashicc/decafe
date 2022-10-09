@@ -71,8 +71,10 @@ Although many features can still be implemented in the future, we believe that i
 
 ### Built With
 
-- [![React][React.js]][React-url]
-<!-- * [![Express][React.js]][Express-url] -->
+[![React][React]][React-url]  
+[![Postgres][Postgres]][Postgres-url]  
+[![JWT][JWT]][JWT-url]  
+[![Visual Studio Code][Visual Studio Code]][Visual Studio Code-url]  
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -177,3 +179,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [license-shield]: https://img.shields.io/github/license/Takashicc/decafe.svg?style=for-the-badge
 [license-url]: https://github.com/Takashicc/decafe/blob/master/LICENSE.txt
 [product-screenshot]: docs/images/decafe_screenshot.png
+[React]: https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB
+[React-url]: https://reactjs.org/
+[Postgres]: https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white
+[Postgres-url]: https://www.postgresql.org/
+[JWT]: https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens
+[JWT-url]: https://jwt.io/
+[Visual Studio Code]: https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white
+[Visual Studio Code-url]:https://code.visualstudio.com/
