@@ -176,3 +176,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [issues-url]: https://github.com/Takashicc/decafe/issues
 [license-shield]: https://img.shields.io/github/license/Takashicc/decafe.svg?style=for-the-badge
 [license-url]: https://github.com/Takashicc/decafe/blob/master/LICENSE.txt
+[product-screenshot]: docs/images/decafe_screenshot.png
