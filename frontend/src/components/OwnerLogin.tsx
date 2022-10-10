@@ -5,6 +5,8 @@ import { ownerLogin } from "../api";
 import * as modelType from "model_type";
 import { useState } from "react";
 import OwnerHeader from "./OwnerHeader";
+import * as schema from "api/schema";
+import Cookies from "js-cookie";
 
 const OwnerLogin: React.FC = () => {
   const {
@@ -18,10 +20,15 @@ const OwnerLogin: React.FC = () => {
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<modelType.LoginOwner> = async (user) => {
-    const errorInfo: modelType.ErrorInfo = await ownerLogin(user);
-    if (errorInfo.message) {
-      setMessage(errorInfo.message);
-    } else {
+    const auth: schema.Auth = await ownerLogin(user);
+
+    if (auth.message) {
+      setMessage(auth.message);
+      return;
+    }
+
+    if (auth.access_token) {
+      Cookies.set("access_token", auth.access_token);
       navigate("/");
     }
   };

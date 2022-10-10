@@ -1,5 +1,6 @@
 import api from "lib/axios_settings";
 import * as modelType from "model_type";
+import * as schema from "api/schema";
 
 /**
  * Insert data into shops table.
@@ -104,11 +105,8 @@ export const findAllUniqueCities = async (): Promise<modelType.CitiesGet[]> => {
  */
 export const ownerLogin = async (
   user: modelType.LoginOwner
-): Promise<modelType.ErrorInfo> => {
-  const response = await api.post<modelType.ErrorInfo>(
-    "/api/v1/owners/login",
-    user
-  );
+): Promise<schema.Auth> => {
+  const response = await api.post<schema.Auth>("/api/v1/owners/login", user);
 
   return response.data;
 };
@@ -129,11 +127,8 @@ export const ownerLogout = async (): Promise<void> => {
  */
 export const ownersSignUp = async (
   user: modelType.SignUpOwner
-): Promise<modelType.ErrorInfo> => {
-  const response = await api.post<modelType.ErrorInfo>(
-    "/api/v1/owners/new",
-    user
-  );
+): Promise<schema.Auth> => {
+  const response = await api.post<schema.Auth>("/api/v1/owners/new", user);
 
   return response.data;
 };
