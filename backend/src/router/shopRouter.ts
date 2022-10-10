@@ -2,6 +2,7 @@ import express from "express";
 import { MenuRepository, ShopRepository } from "../model";
 import isNumeric from "validator/lib/isNumeric";
 import * as modelType from "model_type";
+import { verifyToken } from "../middleware/auth";
 
 const router = express.Router();
 
@@ -18,7 +19,7 @@ router.get("/shops", async (req, res) => {
   return res.status(200).send(shops);
 });
 
-router.post("/shops/new", async (req, res) => {
+router.post("/shops/new", verifyToken, async (req, res) => {
   try {
     const shop: modelType.ShopCreate = req.body;
 
