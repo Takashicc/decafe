@@ -8,7 +8,7 @@ interface ShopInfoProps {
 const Map: React.FC<ShopInfoProps> = ({ shopDetail }) => {
   const shoploc = {
     lat: shopDetail?.shop?.latitude,
-    lng: shopDetail?.shop?.longtitude,
+    lng: shopDetail?.shop?.longitude,
     address: shopDetail?.shop?.address,
   };
   return (

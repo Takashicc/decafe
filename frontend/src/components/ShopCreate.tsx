@@ -11,7 +11,7 @@ interface Shop {
   address: string;
   city: string;
   latitude: number;
-  longtitude: number;
+  longitude: number;
 }
 
 interface Menu {
@@ -115,16 +115,16 @@ const ShopCreate: React.FC = () => {
           id="shop.latitude"
           placeholder="Latitude"
         />
-        <div className="error-message">{errors.shop?.longtitude?.message}</div>
-        <label htmlFor="shop.longtitude">Longitude:</label>
+        <div className="error-message">{errors.shop?.longitude?.message}</div>
+        <label htmlFor="shop.longitude">Longitude:</label>
         <input
-          {...register("shop.longtitude", {
+          {...register("shop.longitude", {
             required: "Required",
             min: -180,
             max: 180,
             valueAsNumber: true,
           })}
-          id="shop.longtitude"
+          id="shop.longitude"
           placeholder="Longitude"
         />
       </fieldset>
