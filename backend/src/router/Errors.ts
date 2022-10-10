@@ -7,8 +7,6 @@ abstract class BaseError extends Error {
 
 export class UsernameOrPasswordInvalidError extends BaseError {}
 
-export class UserNotFoundError extends BaseError {}
-
 export class UserExistsError extends BaseError {}
 
 export class HashFailedError extends BaseError {}
