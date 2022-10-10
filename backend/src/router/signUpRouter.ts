@@ -1,4 +1,4 @@
-import express, { CookieOptions } from "express";
+import express from "express";
 import { OwnerRepository } from "../model";
 import bcrypt from "bcrypt";
 import { jwtHelper } from "../helper/jwtHelper";
