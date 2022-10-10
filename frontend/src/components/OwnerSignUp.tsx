@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import * as modelType from "model_type";
 import { useState } from "react";
 import { ownersSignUp } from "../api";
+import * as schema from "api/schema";
+import Cookies from "js-cookie";
 
 const OwnerSignUp: React.FC = () => {
   const {
@@ -17,10 +19,15 @@ const OwnerSignUp: React.FC = () => {
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<modelType.SignUpOwner> = async (user) => {
-    const errorInfo: modelType.ErrorInfo = await ownersSignUp(user);
-    if (errorInfo.message) {
-      setMessage(errorInfo.message);
-    } else {
+    const auth: schema.Auth = await ownersSignUp(user);
+
+    if (auth.message) {
+      setMessage(auth.message);
+      return;
+    }
+
+    if (auth.access_token) {
+      Cookies.set("access_token", auth.access_token);
       navigate("/");
     }
   };
