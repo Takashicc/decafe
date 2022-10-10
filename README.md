@@ -181,4 +181,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [JWT]: https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens
 [JWT-url]: https://jwt.io/
 [Visual Studio Code]: https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white
-[Visual Studio Code-url]:https://code.visualstudio.com/
+[Visual Studio Code-url]: https://code.visualstudio.com/
