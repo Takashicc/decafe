@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { createMenus, createShop, decodeOwnerId } from "../api";
+import { createMenus, createShop } from "../api";
 import * as modelType from "model_type";
 import "../styles/ShopCreate.css";
 import MenuItem from "./MenuItem";
@@ -40,7 +40,6 @@ const ShopCreate: React.FC = () => {
   const [owner_id, setOwnerId] = useState<number | null>(null);
 
   const navigate = useNavigate();
-  const navigateRef = useRef(navigate);
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -57,6 +56,7 @@ const ShopCreate: React.FC = () => {
 
   const onSubmit = handleSubmit(async (data: ShopCreateFormValues) => {
     try {
+      // TODO delete owner_id
       const shop_id = await createShop({ owner_id: owner_id!, ...data.shop });
       const menus: modelType.MenuCreate[] = [];
       for (let i = 0; i < data.menus.length; i++) {
@@ -72,19 +72,6 @@ const ShopCreate: React.FC = () => {
       console.log(error);
     }
   });
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const id = await decodeOwnerId();
-        console.log("owner id is: ", id);
-        setOwnerId(id);
-      } catch (error) {
-        navigateRef.current = navigate;
-        navigate("/owners/login");
-      }
-    })();
-  }, [navigate]);
 
   return (
     <form onSubmit={onSubmit}>
