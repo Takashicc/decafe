@@ -13,7 +13,7 @@ exports.seed = async function (knex) {
       address: "神奈川県藤沢市鵠沼藤が谷3-872-3",
       city: "Fuzisawa",
       latitude: 35.3239757,
-      longtitude: 139.4770707,
+      longitude: 139.4770707,
     },
     {
       id: 2,
@@ -22,7 +22,7 @@ exports.seed = async function (knex) {
       city: "Boston",
       address: "38 West Newton Street, Boston, MA 02116",
       latitude: 42.3390094,
-      longtitude: -71.0741938,
+      longitude: -71.0741938,
     },
     {
       id: 3,
@@ -31,7 +31,7 @@ exports.seed = async function (knex) {
       address: "神奈川县藤泽市大桐465-1159",
       city: "Fuzisawa",
       latitude: 35.3782411,
-      longtitude: 139.4446044,
+      longitude: 139.4446044,
     },
     {
       id: 4,
@@ -40,7 +40,7 @@ exports.seed = async function (knex) {
       address: "40 West Newton Street, Boston, MA 02116",
       city: "Boston",
       latitude: 42.339201,
-      longtitude: -71.076358,
+      longitude: -71.076358,
     },
     {
       id: 5,
@@ -49,7 +49,7 @@ exports.seed = async function (knex) {
       address: "204 E 13th St, New York, NY 10003, United States",
       city: "New York",
       latitude: 40.7127753,
-      longtitude: -74.0059728,
+      longitude: -74.0059728,
     },
     {
       id: 6,
@@ -58,7 +58,7 @@ exports.seed = async function (knex) {
       address: "大阪府堺市南区御池台3丁目1-18",
       city: "Osaka",
       latitude: 34.4638854,
-      longtitude: 135.5011332,
+      longitude: 135.5011332,
     },
     {
       id: 7,
@@ -67,7 +67,7 @@ exports.seed = async function (knex) {
       address: "大阪府平方市春日北町119-1251号",
       city: "Osaka",
       latitude: 34.8078083,
-      longtitude: 135.6820816,
+      longitude: 135.6820816,
     },
     {
       id: 8,
@@ -76,7 +76,7 @@ exports.seed = async function (knex) {
       address: "大阪市森町郡熊取町幸田165-1265",
       city: "Osaka",
       latitude: 34.387699,
-      longtitude: 135.2902878,
+      longitude: 135.2902878,
     },
   ]);
 };

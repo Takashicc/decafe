@@ -7,7 +7,7 @@ const TABLE_NAME = "shops";
 exports.up = function (knex) {
   return knex.schema.alterTable(TABLE_NAME, function (table) {
     table.float("latitude");
-    table.float("longtitude");
+    table.float("longitude");
   });
 };
 
@@ -18,6 +18,6 @@ exports.up = function (knex) {
 exports.down = function (knex) {
   return knex.schema.alterTable(TABLE_NAME, function (table) {
     table.dropColumn("latitude");
-    table.dropColumn("longtitude");
+    table.dropColumn("longitude");
   });
 };
