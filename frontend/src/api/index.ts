@@ -132,27 +132,3 @@ export const ownersSignUp = async (
 
   return response.data;
 };
-
-/**
- * Verify the JsonWebToken and check is authenticated or not.
- *
- * @returns Authenticated or not
- */
-export const jwtIsAuthenticated = async (): Promise<boolean> => {
-  const response = await api.get<modelType.AuthStatus>(
-    "/api/v1/tokenVerification"
-  );
-
-  return response.data.isAuthenticated;
-};
-
-/**
- * Get owner id from decoded cookie.
- *
- * @returns Owner id
- */
-export const decodeOwnerId = async (): Promise<number> => {
-  const response = await api.get("/api/v1/cookie/id");
-
-  return response.data.owner_id;
-};
