@@ -56,7 +56,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://decafe-tokyo.herokuapp.com/)
+<img src="docs/images/decafe_screenshot.png" alt="Logo">
 
 There are many apps to find locations and coffee shops out there, However, none of them can specifically find decaf coffee shops.
 deCafé is the only App that can provide you with a way to find decaf.
@@ -81,9 +81,6 @@ Although many features can still be implemented in the future, we believe that i
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
 
 Install postgres and create database named `decafe`
@@ -100,12 +97,15 @@ Install postgres and create database named `decafe`
 
    ```sh
    git clone https://github.com/Takashicc/decafe.git
+   cd decafe
    ```
 
-2. Install NPM packages
+2. Install NPM packages (root, backend and frontend)
 
    ```sh
    npm install
+   cd backend && npm install && cd -
+   cd frontend && npm install && cd -
    ```
 
 3. Create tables
@@ -124,15 +124,11 @@ Install postgres and create database named `decafe`
    - For developing
         After running the below command, Go to `localhost:3000`.
 
+        > **Note**
+        > Run the below command at the root of the project.
+
         ```sh
         npm run dev
-        ```
-
-   - For production
-        After running the below command, Go to `localhost:8080`.
-
-        ```sh
-        npm run prod
         ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -178,7 +174,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [issues-url]: https://github.com/Takashicc/decafe/issues
 [license-shield]: https://img.shields.io/github/license/Takashicc/decafe.svg?style=for-the-badge
 [license-url]: https://github.com/Takashicc/decafe/blob/master/LICENSE.txt
-[product-screenshot]: docs/images/decafe_screenshot.png
 [React]: https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB
 [React-url]: https://reactjs.org/
 [Postgres]: https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white
