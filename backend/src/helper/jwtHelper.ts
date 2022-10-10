@@ -39,16 +39,4 @@ export class jwtHelper {
       throw error;
     }
   }
-
-  /**
-   * Get cookie options.
-   *
-   * @returns Cookie options
-   */
-  public static getCookieOptions(): CookieOptions {
-    return {
-      httpOnly: true,
-      expires: new Date(Date.now() + ms("1d")),
-    };
-  }
 }
