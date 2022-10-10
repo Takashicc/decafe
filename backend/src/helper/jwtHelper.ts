@@ -1,3 +1,4 @@
+import { AccessTokenInvalidError } from "../error/Error";
 import * as jwt from "jsonwebtoken";
 
 interface DecodedPayload {
@@ -34,7 +35,7 @@ export class jwtHelper {
       const decoded = jwt.verify(token, this.SECRET_KEY);
       return decoded as DecodedPayload;
     } catch (error) {
-      throw error;
+      throw new AccessTokenInvalidError();
     }
   }
 }
