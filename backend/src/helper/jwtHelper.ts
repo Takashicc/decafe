@@ -1,6 +1,4 @@
-import { CookieOptions } from "express";
 import * as jwt from "jsonwebtoken";
-import ms from "ms";
 
 interface DecodedPayload {
   owner_id: number;
