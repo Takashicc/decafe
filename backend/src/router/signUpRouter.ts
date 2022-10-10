@@ -33,9 +33,8 @@ router.post("/owners/new", async (req, res) => {
       password: hashPassword,
     });
 
-    const jwtToken = jwtHelper.createToken(owner_id);
-    const cookieOptions: CookieOptions = jwtHelper.getCookieOptions();
-    return res.status(200).cookie("jwtToken", jwtToken, cookieOptions).send();
+    const access_token = jwtHelper.createToken(owner_id);
+    return res.status(200).send({ access_token });
   } catch (error) {
     if (error instanceof UsernameOrPasswordInvalidError) {
       const errorInfo: modelType.ErrorInfo = {

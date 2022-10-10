@@ -2,7 +2,7 @@ import express, { CookieOptions } from "express";
 import { OwnerRepository } from "../model";
 import * as bcrypt from "bcrypt";
 import { jwtHelper } from "../helper/jwtHelper";
-import { UsernameOrPasswordInvalidError, UserNotFoundError } from "./Errors";
+import { UsernameOrPasswordInvalidError } from "./Errors";
 import * as modelType from "model_type";
 
 const router = express.Router();
@@ -16,7 +16,7 @@ router.post("/owners/login", async (req, res) => {
     const result: modelType.Owner | undefined =
       await OwnerRepository.findOneByName(user.name);
     if (!result) {
-      throw new UserNotFoundError();
+      throw new UsernameOrPasswordInvalidError();
     }
 
     const match = await bcrypt.compare(user.password, result.password);
@@ -25,19 +25,12 @@ router.post("/owners/login", async (req, res) => {
       throw new UsernameOrPasswordInvalidError();
     }
 
-    const jwtToken: string = jwtHelper.createToken(result.id!);
-    const cookieOptions: CookieOptions = jwtHelper.getCookieOptions();
-
-    res.status(200).cookie("jwtToken", jwtToken, cookieOptions).send();
+    const access_token: string = jwtHelper.createToken(result.id!);
+    res.status(200).send({ access_token });
   } catch (error) {
     if (error instanceof UsernameOrPasswordInvalidError) {
       const errorInfo: modelType.ErrorInfo = {
         message: "User name or password is invalid",
-      };
-      res.status(200).send(errorInfo);
-    } else if (error instanceof UserNotFoundError) {
-      const errorInfo: modelType.ErrorInfo = {
-        message: "User not found",
       };
       res.status(200).send(errorInfo);
     } else {
