@@ -112,14 +112,6 @@ export const ownerLogin = async (
 };
 
 /**
- * Owner logout.
- */
-export const ownerLogout = async (): Promise<void> => {
-  await api.post("/api/v1/owners/logout");
-  return;
-};
-
-/**
  * Send data to the server and sign up a new owner user.
  *
  * @param user User object
