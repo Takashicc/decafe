@@ -9,21 +9,17 @@ import * as modelType from "model_type";
  * @returns Record count
  */
 export async function countRecordByName(name: string): Promise<number> {
-  try {
-    const total = await knex
-      .count("id")
-      .from(TABLE_OWNERS)
-      .where({ name })
-      .first();
+  const total = await knex
+    .count("id")
+    .from(TABLE_OWNERS)
+    .where({ name })
+    .first();
 
-    if (!total || total.count === 0) {
-      return 0;
-    }
-
-    return +total.count;
-  } catch (error) {
-    throw error;
+  if (!total || total.count === 0) {
+    return 0;
   }
+
+  return +total.count;
 }
 
 /**
@@ -36,31 +32,27 @@ export async function countRecordByName(name: string): Promise<number> {
 export async function findOneByName(
   name: string
 ): Promise<modelType.Owner | undefined> {
-  try {
-    const count = await countRecordByName(name);
+  const count = await countRecordByName(name);
 
-    if (count === 0) {
-      return;
-    }
-
-    const owner = await knex
-      .select<modelType.Owner>({
-        id: "id",
-        name: "name",
-        password: "password",
-      })
-      .from(TABLE_OWNERS)
-      .where({ name })
-      .first();
-
-    if (!owner) {
-      return;
-    }
-
-    return owner;
-  } catch (error) {
-    throw error;
+  if (count === 0) {
+    return;
   }
+
+  const owner = await knex
+    .select<modelType.Owner>({
+      id: "id",
+      name: "name",
+      password: "password",
+    })
+    .from(TABLE_OWNERS)
+    .where({ name })
+    .first();
+
+  if (!owner) {
+    return;
+  }
+
+  return owner;
 }
 
 /**
@@ -69,12 +61,7 @@ export async function findOneByName(
  * @param owner Owner object
  */
 export async function create(owner: modelType.Owner): Promise<number> {
-  let owner_id: number;
-  try {
-    const rows = await knex(TABLE_OWNERS).insert(owner, "id");
-    owner_id = rows[0].id;
-  } catch (error) {
-    throw error;
-  }
+  const rows = await knex(TABLE_OWNERS).insert(owner, "id");
+  let owner_id: number = rows[0].id;
   return owner_id;
 }

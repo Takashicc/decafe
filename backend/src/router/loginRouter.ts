@@ -2,11 +2,11 @@ import express from "express";
 import { OwnerRepository } from "../model";
 import * as bcrypt from "bcrypt";
 import { jwtHelper } from "../helper/jwtHelper";
-import { UsernameOrPasswordInvalidError } from "./Errors";
+import { UsernameOrPasswordInvalidError } from "../error/Error";
 import * as modelType from "model_type";
 
 const router = express.Router();
-router.post("/owners/login", async (req, res) => {
+router.post("/owners/login", async (req, res, next) => {
   try {
     const user: modelType.LoginOwner = req.body;
     if (!user.name || !user.password) {
@@ -27,15 +27,8 @@ router.post("/owners/login", async (req, res) => {
 
     const access_token: string = jwtHelper.createToken(result.id!);
     res.status(200).send({ access_token });
-  } catch (error) {
-    if (error instanceof UsernameOrPasswordInvalidError) {
-      const errorInfo: modelType.ErrorInfo = {
-        message: "User name or password is invalid",
-      };
-      res.status(200).send(errorInfo);
-    } else {
-      res.status(500).send();
-    }
+  } catch (err) {
+    next(err);
   }
 });
 

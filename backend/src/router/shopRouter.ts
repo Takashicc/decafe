@@ -6,36 +6,30 @@ import { verifyToken } from "../middleware/auth";
 
 const router = express.Router();
 
-router.get("/shops", async (req, res) => {
-  let shops: modelType.AllShopGet;
+router.get("/shops", async (req, res, next) => {
   try {
-    shops = await ShopRepository.findAllShops();
+    let shops: modelType.AllShopGet = await ShopRepository.findAllShops();
+    return res.status(200).send(shops);
   } catch (error) {
-    console.log(error);
-    res.status(500).send();
-    return;
+    next(error);
   }
-
-  return res.status(200).send(shops);
 });
 
-router.post("/shops/new", verifyToken, async (req, res) => {
+router.post("/shops/new", verifyToken, async (req, res, next) => {
   try {
     const shop: modelType.ShopCreate = req.body;
-
     const shop_id: number = await ShopRepository.create(shop);
     res.status(200).send({ shop_id });
   } catch (error) {
-    console.log(error);
-    res.status(500).send();
+    next(error);
   }
 });
 
-router.get("/shops/:id", async (req, res) => {
-  let shopAndMenu: modelType.ShopAndMenu;
-  let shop: modelType.ShopGet;
-  let menus: modelType.MenuGet[];
+router.get("/shops/:id", async (req, res, next) => {
   try {
+    let shopAndMenu: modelType.ShopAndMenu;
+    let shop: modelType.ShopGet;
+    let menus: modelType.MenuGet[];
     if (!isNumeric(req.params.id)) {
       res.status(400).send();
       return;
@@ -43,32 +37,27 @@ router.get("/shops/:id", async (req, res) => {
 
     // Get the shop by id
     // Get the menus by shop id
-    // Store the shop and menus to shopAndMenu varibale
+    // Store the shop and menus to shopAndMenu variable
 
     const id: number = +req.params.id;
     shop = await ShopRepository.findShopById(id);
     menus = await MenuRepository.findMenuByShopId(id);
     shopAndMenu = { shop, menus };
-  } catch (error) {
-    console.log(error);
-    res.status(500).send();
-    return;
-  }
 
-  return res.status(200).send(shopAndMenu);
+    return res.status(200).send(shopAndMenu);
+  } catch (error) {
+    next(error);
+  }
 });
 
-router.get("/cities", async (req, res) => {
-  let cities: modelType.CitiesGet;
+router.get("/cities", async (req, res, next) => {
   try {
-    cities = await ShopRepository.findAllUniqueCities();
+    let cities: modelType.CitiesGet =
+      await ShopRepository.findAllUniqueCities();
+    return res.status(200).send(cities);
   } catch (error) {
-    console.log(error);
-    res.status(500).send();
-    return;
+    next(error);
   }
-
-  return res.status(200).send(cities);
 });
 
 export default router;

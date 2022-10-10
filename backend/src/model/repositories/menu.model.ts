@@ -9,15 +9,8 @@ import * as modelType from "model_type";
  * @returns Inserted data id
  */
 export async function create(menus: modelType.MenuCreate[]): Promise<number[]> {
-  let menu_ids: number[];
-
-  try {
-    const rows = await knex(TABLE_MENUS).insert(menus, "id");
-    menu_ids = rows.map((row) => row.id);
-  } catch (error) {
-    throw error;
-  }
-
+  const rows = await knex(TABLE_MENUS).insert(menus, "id");
+  let menu_ids: number[] = rows.map((row) => row.id);
   return menu_ids;
 }
 
@@ -30,22 +23,16 @@ export async function create(menus: modelType.MenuCreate[]): Promise<number[]> {
 export async function findMenuByShopId(
   shopid: number
 ): Promise<modelType.MenuGet[]> {
-  let menu: modelType.MenuGet[];
-
-  try {
-    menu = await knex
-      .select({
-        name: "name",
-        price: "price",
-      })
-      .from(TABLE_MENUS)
-      .orderBy("name", "asc")
-      .where({
-        shop_id: shopid,
-      });
-  } catch (error) {
-    throw error;
-  }
+  let menu: modelType.MenuGet[] = await knex
+    .select({
+      name: "name",
+      price: "price",
+    })
+    .from(TABLE_MENUS)
+    .orderBy("name", "asc")
+    .where({
+      shop_id: shopid,
+    });
 
   return menu;
 }

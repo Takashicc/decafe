@@ -9,15 +9,8 @@ import * as modelType from "model_type";
  * @returns Inserted data id
  */
 export async function create(shop: modelType.ShopCreate): Promise<number> {
-  let id: number;
-
-  try {
-    const rows = await knex(TABLE_SHOPS).insert(shop, "id");
-    id = rows[0].id;
-  } catch (error) {
-    throw error;
-  }
-
+  const rows = await knex(TABLE_SHOPS).insert(shop, "id");
+  let id: number = rows[0].id;
   return id;
 }
 
@@ -28,24 +21,18 @@ export async function create(shop: modelType.ShopCreate): Promise<number> {
  * @returns Shop data find by id
  */
 export async function findShopById(id: number): Promise<modelType.ShopGet> {
-  let shop: modelType.ShopGet;
-
-  try {
-    shop = await knex
-      .select({
-        name: `${TABLE_SHOPS}.name`,
-        address: `${TABLE_SHOPS}.address`,
-        latitude: `${TABLE_SHOPS}.latitude`,
-        longtitude: `${TABLE_SHOPS}.longtitude`,
-      })
-      .from(TABLE_SHOPS)
-      .where({
-        id,
-      })
-      .first();
-  } catch (error) {
-    throw error;
-  }
+  let shop: modelType.ShopGet = await knex
+    .select({
+      name: `${TABLE_SHOPS}.name`,
+      address: `${TABLE_SHOPS}.address`,
+      latitude: `${TABLE_SHOPS}.latitude`,
+      longtitude: `${TABLE_SHOPS}.longtitude`,
+    })
+    .from(TABLE_SHOPS)
+    .where({
+      id,
+    })
+    .first();
 
   return shop;
 }
@@ -56,17 +43,11 @@ export async function findShopById(id: number): Promise<modelType.ShopGet> {
  * @returns Shop data find by id
  */
 export async function findAllUniqueCities(): Promise<modelType.CitiesGet> {
-  let cities: modelType.CitiesGet;
-
-  try {
-    cities = await knex
-      .select("city")
-      .orderBy("city", "asc")
-      .distinct()
-      .from(TABLE_SHOPS);
-  } catch (error) {
-    throw error;
-  }
+  let cities: modelType.CitiesGet = await knex
+    .select("city")
+    .orderBy("city", "asc")
+    .distinct()
+    .from(TABLE_SHOPS);
 
   return cities;
 }
@@ -77,16 +58,10 @@ export async function findAllUniqueCities(): Promise<modelType.CitiesGet> {
  * @returns Shop data find by id
  */
 export async function findAllShops(): Promise<modelType.AllShopGet> {
-  let allShops: modelType.AllShopGet;
-
-  try {
-    allShops = await knex
-      .select("id", "name", "city", "address")
-      .orderBy("city", "asc")
-      .from(TABLE_SHOPS);
-  } catch (error) {
-    throw error;
-  }
+  let allShops: modelType.AllShopGet = await knex
+    .select("id", "name", "city", "address")
+    .orderBy("city", "asc")
+    .from(TABLE_SHOPS);
 
   return allShops;
 }
