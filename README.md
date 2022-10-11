@@ -120,7 +120,16 @@ Install postgres and create database named `decafe`
     npm run seed
     ```
 
-5. Run server
+5. Create `.env` file.
+   - Create `.env` file in `backend` directory.
+      - Set the key and values like below.
+         - `JWT_SECRET_KEY` is for jwt. You can make a secure secret key by running `openssl rand -hex 32`.
+
+         ```env
+         JWT_SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+         ```
+
+6. Run server
    - For developing
         After running the below command, Go to `localhost:3000`.
 
