@@ -2,7 +2,7 @@ import express from "express";
 import { MenuRepository, ShopRepository } from "../model";
 import isNumeric from "validator/lib/isNumeric";
 import * as modelType from "model_type";
-import { verifyToken } from "../middleware/auth";
+import { verifyToken } from "../middleware/Auth";
 
 const router = express.Router();
 

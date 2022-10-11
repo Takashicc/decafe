@@ -1,7 +1,7 @@
 import express from "express";
 import { OwnerRepository } from "../model";
 import * as bcrypt from "bcrypt";
-import { jwtHelper } from "../helper/jwtHelper";
+import { jwtHelper } from "../helper/JwtHelper";
 import { UsernameOrPasswordInvalidError } from "../error/Error";
 import * as modelType from "model_type";
 

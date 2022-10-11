@@ -1,6 +1,6 @@
 import { AuthorizationHeaderError } from "../error/Error";
 import { Request, Response, NextFunction } from "express";
-import { jwtHelper } from "../helper/jwtHelper";
+import { jwtHelper } from "../helper/JwtHelper";
 import { StatusCodes } from "http-status-codes";
 
 export function verifyToken(req: Request, res: Response, next: NextFunction) {
