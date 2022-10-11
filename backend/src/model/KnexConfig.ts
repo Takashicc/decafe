@@ -1,5 +1,5 @@
 import knex from "knex";
-import config from "./knexfile";
+import config from "./KnexFile";
 
 let knexConfig;
 if (process.env.ENVIRONMENT === "production") {

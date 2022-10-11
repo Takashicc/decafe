@@ -27,8 +27,8 @@
   "scripts": {
     "start": "tsc && node build",
     "dev": "tsnd --respawn src/index.ts",
-    "migrate": "knex migrate:latest --knexfile src/model/knexfile.js",
-    "seed": "knex seed:run --knexfile src/model/knexfile.js"
+    "migrate": "knex migrate:latest --knexfile src/model/KnexFile.js",
+    "seed": "knex seed:run --knexfile src/model/KnexFile.js"
   },
   "type": "commonjs",
   "devDependencies": {

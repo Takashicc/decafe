@@ -1,4 +1,4 @@
-import knex from "../knexConfig";
+import knex from "../KnexConfig";
 import { TABLE_SHOPS } from "../const";
 import * as modelType from "model_type";
 
