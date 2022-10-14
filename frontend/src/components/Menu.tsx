@@ -1,12 +1,13 @@
-import * as modelType from "model_type";
 import "../styles/Menu.css";
 
-interface ShopInfoProps {
-  shopDetail: modelType.ShopAndMenu;
+interface MenuProps {
+  menus: {
+    name: string;
+    price: number;
+  }[];
 }
 
-const Menu: React.FC<ShopInfoProps> = ({ shopDetail }) => {
-  const menu = shopDetail?.menus;
+const Menu = ({ menus }: MenuProps) => {
   return (
     <ul className="menutable">
       <span className="menuTop">Menu</span>
@@ -14,11 +15,11 @@ const Menu: React.FC<ShopInfoProps> = ({ shopDetail }) => {
         <span className="drinktitle">Drink</span>
         <span className="drinkpricetitle">Price</span>
       </li>
-      {menu?.map((singleMenu) => {
+      {menus.map((menu, i) => {
         return (
-          <li className="list">
-            <span>{singleMenu.name}</span>
-            <span className="drinkprice">¥{singleMenu.price}</span>
+          <li className="list" key={i}>
+            <span>{menu.name}</span>
+            <span className="drinkprice">¥{menu.price}</span>
           </li>
         );
       })}
