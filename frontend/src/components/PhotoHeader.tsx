@@ -1,5 +1,4 @@
 import "../styles/PhotoHeader.css";
-import * as modelType from "model_type";
 
 //open image in new tab
 const openInNewTab = (url: string): void => {
@@ -7,11 +6,11 @@ const openInNewTab = (url: string): void => {
   if (newWindow) newWindow.opener = null;
 };
 
-interface ShopInfoProps {
-  shopDetail: modelType.ShopAndMenu;
+interface PhotoHeaderProps {
+  shopName: string;
 }
 
-const Photoheader: React.FC<ShopInfoProps> = ({ shopDetail }) => {
+const PhotoHeader = ({ shopName }: PhotoHeaderProps) => {
   //image string example
   const images = [
     "images/1 (3).jpg",
@@ -20,10 +19,6 @@ const Photoheader: React.FC<ShopInfoProps> = ({ shopDetail }) => {
     "images/1.jpg",
     "images/1 (4).jpg",
   ];
-
-  const store = {
-    name: shopDetail?.shop?.name,
-  };
 
   return (
     <div className="imagewrapper">
@@ -38,13 +33,14 @@ const Photoheader: React.FC<ShopInfoProps> = ({ shopDetail }) => {
                 openInNewTab(`${image}`);
               }}
               alt={alt_tag}
+              key={i}
             />
           );
         })}
       </div>
-      <div className="storename">{store.name}</div>
+      <div className="storename">{shopName}</div>
     </div>
   );
 };
 
-export default Photoheader;
+export default PhotoHeader;
