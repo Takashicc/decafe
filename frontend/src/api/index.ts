@@ -76,19 +76,13 @@ export const findShopAndMenusByShopId = async (
 };
 
 /**
- * Get all cities data from shops table.
+ * Get all unique cities.
  *
- * @returns All cities
+ * @returns All unique cities.
  */
-export const findAllUniqueCities = async (): Promise<modelType.CitiesGet[]> => {
-  let cities: modelType.CitiesGet[];
-  try {
-    const response = await api.get<modelType.CitiesGet[]>(`/api/v1/cities`);
-    cities = response.data;
-  } catch (error) {
-    throw error;
-  }
-  return cities;
+export const findAllUniqueCities = async (): Promise<schema.CityOnly[]> => {
+  const response = await api.get<schema.CityOnly[]>(`/api/v1/cities`);
+  return response.data;
 };
 
 /**
