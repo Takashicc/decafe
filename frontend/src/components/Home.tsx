@@ -1,28 +1,21 @@
 import { useState } from "react";
 import Header from "./Header";
-import Searchbar from "./Searchbar";
+import SearchBar from "./Searchbar";
 import SearchResult from "./SearchResult";
 
-export type SearchbarOptions = {
+export type SearchBarOptions = {
   label: string;
   value: string;
 };
 
 const Home = () => {
-  const [selectedOption, setSelectedOption] = useState<SearchbarOptions | null>(
-    null
-  );
+  const [selectedCity, setSelectedCity] = useState<string | null>(null);
 
   return (
     <>
       <Header />
-      <Searchbar
-        selectedOption={selectedOption}
-        setSelectedOption={setSelectedOption}
-      />
-      {selectedOption !== null ? (
-        <SearchResult selectedOption={selectedOption} />
-      ) : null}
+      <SearchBar setSelectedCity={setSelectedCity} />
+      {selectedCity && <SearchResult selectedCity={selectedCity} />}
     </>
   );
 };
