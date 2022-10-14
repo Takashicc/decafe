@@ -1,5 +1,6 @@
 module.exports = {
   development: {
+    debug: true,
     client: "pg",
     connection: {
       database: "decafe",
