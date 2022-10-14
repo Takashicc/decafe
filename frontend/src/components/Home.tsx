@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Header from "./Header";
-import SearchBar from "./Searchbar";
+import SearchBar from "./SearchBar";
 import SearchResult from "./SearchResult";
 
 export type SearchBarOptions = {
