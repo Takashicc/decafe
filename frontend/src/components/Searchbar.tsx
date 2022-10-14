@@ -1,39 +1,61 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import useDebouncedQuery from "hooks/DebouncedQuery";
 import Select from "react-select";
 import { findAllUniqueCities } from "../api";
-import "../styles/searchbar.css";
-import { SearchbarOptions } from "./Home";
+import "../styles/SearchBar.css";
 import { Link } from "react-router-dom";
 
-interface SearchbarProps {
-  selectedOption: SearchbarOptions | null;
-  setSelectedOption: React.Dispatch<
-    React.SetStateAction<SearchbarOptions | null>
-  >;
+interface SearchBarProps {
+  setSelectedCity: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const Searchbar: React.FC<SearchbarProps> = ({
-  selectedOption,
-  setSelectedOption,
-}) => {
-  const [options, setOptions] = useState<SearchbarOptions[]>([]);
+interface CityOption {
+  label: string;
+  value: string;
+}
+
+const SearchBar = ({ setSelectedCity }: SearchBarProps) => {
+  const [options, setOptions] = useState<CityOption[]>([]);
+  const [displayOptions, setDisplayOptions] = useState<CityOption[]>();
+  const [inputValue, setInputValue] = useDebouncedQuery(async (query) => {
+    const result: CityOption[] = [];
+    for (let i = 0; i < options.length; i++) {
+      const label = options[i].label;
+      const value = options[i].value;
+      if (label.toLowerCase().includes(query.toLowerCase())) {
+        result.push({
+          label,
+          value,
+        });
+      }
+    }
+
+    setDisplayOptions(result);
+  });
+
+  const handleInputChange = (newValue: string) => {
+    setInputValue(newValue.replace(/\W/g, ""));
+  };
+
+  const handleChange = (cityOption: CityOption | null) => {
+    if (cityOption !== null) setSelectedCity(cityOption.label);
+  };
 
   useEffect(() => {
     (async () => {
-      const result = await findAllUniqueCities();
-      const cities: SearchbarOptions[] = result.map((e) => {
-        return {
-          label: e.city,
-          value: e.city,
-        };
-      });
-      setOptions(cities);
+      const cities = await findAllUniqueCities();
+      const result: CityOption[] = [];
+      for (let i = 0; i < cities.length; i++) {
+        const city = cities[i].city;
+        result.push({
+          label: city.substring(0, 1).toUpperCase() + city.substring(1),
+          value: city,
+        });
+      }
+      setOptions(result);
+      setDisplayOptions(result);
     })();
   }, []);
-
-  const handleChange = (newValue: SearchbarOptions | null) => {
-    if (newValue !== null) setSelectedOption(newValue);
-  };
 
   return (
     <div className="searchbarWapper">
@@ -47,24 +69,15 @@ const Searchbar: React.FC<SearchbarProps> = ({
         </Link>
       </div>
       <Select
-        value={selectedOption}
+        inputValue={inputValue}
+        onInputChange={handleInputChange}
+        options={displayOptions}
         onChange={handleChange}
-        options={options}
-        placeholder="ex. Fuzisawa"
-        backspaceRemovesValue={true}
-        isClearable
-        openMenuOnFocus
-        blurInputOnSelect
-        escapeClearsValue
-        openMenuOnClick={false}
+        placeholder="ex. Boston"
         maxMenuHeight={200}
-        components={{
-          DropdownIndicator: () => null,
-          IndicatorSeparator: () => null,
-        }}
       />
     </div>
   );
 };
 
-export default Searchbar;
+export default SearchBar;
