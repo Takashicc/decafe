@@ -1,44 +1,46 @@
 import { useEffect, useState } from "react";
-import * as modelType from "model_type";
-import { findShopAndMenuById } from "../api";
-import Photoheader from "./PhotoHeader";
+import { findShopAndMenusByShopId } from "../api";
+import PhotoHeader from "./PhotoHeader";
 import Map from "./Map";
 import Menu from "./Menu";
 import { useParams } from "react-router-dom";
 import isNumeric from "validator/lib/isNumeric";
+import { ShopAndMenus } from "api/schema";
 
-const ShopMain: React.FC = () => {
+const ShopDetail = () => {
   let { id } = useParams();
-  const [shopDetail, setShopDetail] = useState<modelType.ShopAndMenu>();
-  const [notFound, setNotFound] = useState<boolean>(false);
+  const [shopDetail, setShopDetail] = useState<ShopAndMenus>();
 
   useEffect(() => {
     (async () => {
       if (!id || !isNumeric(id)) {
-        setNotFound(true);
-        setShopDetail(undefined);
         return;
       }
-      const numId: number = +id;
-      const shop: modelType.ShopAndMenu = await findShopAndMenuById(numId);
-      setShopDetail(shop);
-      if (shop === undefined) {
-        setNotFound(true);
-      } else {
-        setNotFound(false);
-      }
+      const shopId: number = +id;
+      const shopAndMenus: ShopAndMenus = await findShopAndMenusByShopId(shopId);
+      setShopDetail(shopAndMenus);
     })();
   }, [id]);
 
-  return (
-    <div className="Shopmain">
-      <Photoheader shopDetail={shopDetail} />
+  const render = () => {
+    if (shopDetail === undefined) {
+      return <></>;
+    }
 
-      <Menu shopDetail={shopDetail} />
+    return (
+      <div className="Shopmain">
+        <PhotoHeader shopName={shopDetail.shop.name} />
+        <Menu menus={shopDetail.menus} />
+        <Map
+          longitude={shopDetail.shop.longitude}
+          latitude={shopDetail.shop.latitude}
+          address={shopDetail.shop.address}
+        />
+      </div>
+    );
+  };
 
-      <Map shopDetail={shopDetail} />
-    </div>
-  );
+  return render();
 };
 
-export default ShopMain;
+export default ShopDetail;
