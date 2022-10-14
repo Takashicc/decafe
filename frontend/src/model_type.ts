@@ -52,13 +52,6 @@ export interface AuthCheck {
   isAuthenticated: boolean;
 }
 
-export type ShopAndMenu =
-  | {
-      shop: ShopGet;
-      menus: MenuGet[];
-    }
-  | undefined;
-
 export interface CitiesGet {
   city: string;
 }
