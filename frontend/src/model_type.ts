@@ -52,10 +52,6 @@ export interface AuthCheck {
   isAuthenticated: boolean;
 }
 
-export interface CitiesGet {
-  city: string;
-}
-
 export interface AllShopGet {
   id: number;
   owner_id: number;
