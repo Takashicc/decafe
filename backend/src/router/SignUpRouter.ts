@@ -17,13 +17,13 @@ router.post("/owners/new", async (req, res, next) => {
       throw new UsernameOrPasswordInvalidError();
     }
 
-    const result = await OwnerRepository.countRecordByName(user.name);
+    const result = await OwnerRepository.countOwnersByName(user.name);
     if (result > 0) {
       throw new UserExistsError();
     }
 
     const hashedPassword = await bcrypt.hash(user.password, 10);
-    const owner_id = await OwnerRepository.create({
+    const owner_id = await OwnerRepository.createOwner({
       name: user.name,
       password: hashedPassword,
     });

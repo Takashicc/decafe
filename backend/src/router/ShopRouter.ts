@@ -18,8 +18,8 @@ router.get("/shops", async (req, res, next) => {
 router.post("/shops/new", verifyToken, async (req, res, next) => {
   try {
     const shop: modelType.ShopCreate = req.body;
-    const shop_id: number = await ShopRepository.create(shop);
-    res.status(200).send({ shop_id });
+    await ShopRepository.createShop(shop);
+    res.status(200).send();
   } catch (error) {
     next(error);
   }
@@ -41,7 +41,7 @@ router.get("/shops/:id", async (req, res, next) => {
 
     const id: number = +req.params.id;
     shop = await ShopRepository.findShopById(id);
-    menus = await MenuRepository.findMenuByShopId(id);
+    menus = await MenuRepository.findMenusByShopId(id);
     shopAndMenu = { shop, menus };
 
     return res.status(200).send(shopAndMenu);
