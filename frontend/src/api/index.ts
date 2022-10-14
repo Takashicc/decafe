@@ -61,24 +61,18 @@ export const findAllShops = async (): Promise<modelType.AllShopGet[]> => {
 };
 
 /**
- * Find shop by id.
+ * Find shop and menus by shop id.
  *
- * @param id shop id
- * @returns Shop data find by id
+ * @param shopId Shop id.
+ * @returns Shop and menus.
  */
-export const findShopAndMenuById = async (
-  id: number
-): Promise<modelType.ShopAndMenu> => {
-  let shop: modelType.ShopAndMenu;
-  try {
-    const response = await api.get<modelType.ShopAndMenu>(
-      `/api/v1/shops/${id}`
-    );
-    shop = response.data;
-  } catch (error) {
-    return shop;
-  }
-  return shop;
+export const findShopAndMenusByShopId = async (
+  shopId: number
+): Promise<schema.ShopAndMenus> => {
+  const response = await api.get<schema.ShopAndMenus>(
+    `/api/v1/shops/${shopId}`
+  );
+  return response.data;
 };
 
 /**
