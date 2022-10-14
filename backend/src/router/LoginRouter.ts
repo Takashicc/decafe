@@ -14,7 +14,7 @@ router.post("/owners/login", async (req, res, next) => {
     }
 
     const result: modelType.Owner | undefined =
-      await OwnerRepository.findOneByName(user.name);
+      await OwnerRepository.findOwnerByName(user.name);
     if (!result) {
       throw new UsernameOrPasswordInvalidError();
     }

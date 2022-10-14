@@ -3,25 +3,22 @@ import { TABLE_MENUS } from "../const";
 import * as modelType from "model_type";
 
 /**
- * Insert data into menus table.
+ * Create menu data.
  *
- * @param menus Array of menu object
- * @returns Inserted data id
+ * @param menus Array of menu object.
  */
-export async function create(menus: modelType.MenuCreate[]): Promise<number[]> {
-  const rows = await knex(TABLE_MENUS).insert(menus, "id");
-  let menu_ids: number[] = rows.map((row) => row.id);
-  return menu_ids;
+export async function createMenu(menus: modelType.MenuCreate[]) {
+  await knex(TABLE_MENUS).insert(menus, "id");
 }
 
 /**
- * Find menu data by shop id.
+ * Find menus by shop id.
  *
- * @param id shop id
- * @returns shop menu find by shop id
+ * @param shopId Shop id.
+ * @returns Array of shop menus.
  */
-export async function findMenuByShopId(
-  shopid: number
+export async function findMenusByShopId(
+  shopId: number
 ): Promise<modelType.MenuGet[]> {
   let menu: modelType.MenuGet[] = await knex
     .select({
@@ -31,7 +28,7 @@ export async function findMenuByShopId(
     .from(TABLE_MENUS)
     .orderBy("name", "asc")
     .where({
-      shop_id: shopid,
+      shop_id: shopId,
     });
 
   return menu;

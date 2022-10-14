@@ -3,22 +3,19 @@ import { TABLE_SHOPS } from "../const";
 import * as modelType from "model_type";
 
 /**
- * Insert data into shops table.
+ * Create shop data.
  *
- * @param shop Shop object
- * @returns Inserted data id
+ * @param shop Shop object.
  */
-export async function create(shop: modelType.ShopCreate): Promise<number> {
-  const rows = await knex(TABLE_SHOPS).insert(shop, "id");
-  let id: number = rows[0].id;
-  return id;
+export async function createShop(shop: modelType.ShopCreate) {
+  await knex(TABLE_SHOPS).insert(shop, "id");
 }
 
 /**
- * Find shop data by id.
+ * Find shop by shop id.
  *
  * @param id Shop id
- * @returns Shop data find by id
+ * @returns Shop object.
  */
 export async function findShopById(id: number): Promise<modelType.ShopGet> {
   let shop: modelType.ShopGet = await knex
@@ -38,9 +35,9 @@ export async function findShopById(id: number): Promise<modelType.ShopGet> {
 }
 
 /**
- * Get all cities shop data.
+ * Find all unique cities.
  *
- * @returns Shop data find by id
+ * @returns Unique cities.
  */
 export async function findAllUniqueCities(): Promise<modelType.CitiesGet> {
   let cities: modelType.CitiesGet = await knex
@@ -53,9 +50,9 @@ export async function findAllUniqueCities(): Promise<modelType.CitiesGet> {
 }
 
 /**
- * Get all shop data.
+ * Find all shops.
  *
- * @returns Shop data find by id
+ * @returns Array of shops.
  */
 export async function findAllShops(): Promise<modelType.AllShopGet> {
   let allShops: modelType.AllShopGet = await knex
