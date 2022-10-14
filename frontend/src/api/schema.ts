@@ -15,3 +15,7 @@ export interface ShopAndMenus {
     price: number;
   }[];
 }
+
+export interface CityOnly {
+  city: string;
+}
