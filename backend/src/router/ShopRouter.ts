@@ -3,6 +3,8 @@ import { MenuRepository, ShopRepository } from "../model";
 import isNumeric from "validator/lib/isNumeric";
 import * as modelType from "model_type";
 import { verifyToken } from "../middleware/Auth";
+import { ShopCreate } from "schemas/ShopSchema";
+import { jwtHelper } from "../helper/JwtHelper";
 
 const router = express.Router();
 
@@ -17,9 +19,13 @@ router.get("/shops", async (req, res, next) => {
 
 router.post("/shops/new", verifyToken, async (req, res, next) => {
   try {
-    const shop: modelType.ShopCreate = req.body;
-    await ShopRepository.createShop(shop);
-    res.status(200).send();
+    // TODO Pass the payload from middleware
+    const ownerId = jwtHelper.verifyToken(
+      req.headers.authorization!.split(" ")[1]
+    ).owner_id;
+    const shop: ShopCreate = req.body;
+    const shopId = await ShopRepository.createShop(ownerId, shop);
+    res.status(200).send({ shopId });
   } catch (error) {
     next(error);
   }
