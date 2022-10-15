@@ -12,15 +12,6 @@ export type MenuGet = {
   price: number;
 };
 
-export interface ShopCreate {
-  owner_id: number;
-  name: string;
-  address: string;
-  city: string;
-  latitude: number;
-  longitude: number;
-}
-
 export interface MenuCreate {
   shop_id: number;
   name: string;
