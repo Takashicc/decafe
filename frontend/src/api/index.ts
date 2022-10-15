@@ -3,26 +3,14 @@ import * as modelType from "model_type";
 import * as schema from "api/schema";
 
 /**
- * Insert data into shops table.
+ * Create new shop.
  *
- * @param shop Shop object
- * @returns Inserted data id
+ * @param shop Shop object.
+ * @returns Created shop id.
  */
-export const createShop = async (
-  shop: modelType.ShopCreate
-): Promise<number> => {
-  let shop_id: number;
-  try {
-    const response = await api.post<{ shop_id: number }>(
-      `/api/v1/shops/new`,
-      shop
-    );
-    shop_id = response.data.shop_id;
-  } catch (error) {
-    throw error;
-  }
-
-  return shop_id;
+export const createShop = async (shop: schema.ShopCreate): Promise<number> => {
+  const response = await api.post<schema.ShopIdOnly>(`/api/v1/shops/new`, shop);
+  return response.data.shopId;
 };
 
 /**
