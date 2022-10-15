@@ -3,11 +3,6 @@ import Header from "./Header";
 import SearchBar from "./SearchBar";
 import SearchResult from "./SearchResult";
 
-export type SearchBarOptions = {
-  label: string;
-  value: string;
-};
-
 const Home = () => {
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
 
