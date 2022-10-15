@@ -19,3 +19,15 @@ export interface ShopAndMenus {
 export interface CityOnly {
   city: string;
 }
+
+export interface ShopIdOnly {
+  shopId: number;
+}
+
+export interface ShopCreate {
+  name: string;
+  address: string;
+  city: string;
+  latitude: number;
+  longitude: number;
+}
