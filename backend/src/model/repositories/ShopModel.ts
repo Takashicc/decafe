@@ -1,14 +1,21 @@
 import knex from "../KnexConfig";
 import { TABLE_SHOPS } from "../const";
 import * as modelType from "model_type";
+import { ShopCreate } from "schemas/ShopSchema";
 
 /**
- * Create shop data.
+ * Create new shop.
  *
+ * @param owner_id: Owner id.
  * @param shop Shop object.
+ * @returns Created shop id.
  */
-export async function createShop(shop: modelType.ShopCreate) {
-  await knex(TABLE_SHOPS).insert(shop, "id");
+export async function createShop(owner_id: number, shop: ShopCreate) {
+  const result = await knex(TABLE_SHOPS)
+    .insert({ owner_id, ...shop })
+    .returning("id");
+
+  return result[0].id;
 }
 
 /**
