@@ -1,12 +1,8 @@
-import { useState } from "react";
-import { useFieldArray, useForm } from "react-hook-form";
+import { FieldError, SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { createMenus, createShop } from "../api";
-import * as modelType from "model_type";
-import "../styles/ShopCreate.css";
-import MenuItem from "./MenuItem";
+import { createShop } from "../api";
 
-interface Shop {
+interface ShopCreateFormValues {
   name: string;
   address: string;
   city: string;
@@ -14,149 +10,97 @@ interface Shop {
   longitude: number;
 }
 
-interface Menu {
-  name: string;
-  price: number | null;
-}
-
-export interface ShopCreateFormValues {
-  shop: Shop;
-  menus: Menu[];
-}
-
 const ShopCreate: React.FC = () => {
   const {
-    handleSubmit,
     register,
-    control,
+    handleSubmit,
     formState: { errors },
-  } = useForm<ShopCreateFormValues>({
-    defaultValues: {
-      menus: [{ name: "", price: null }],
-    },
-    mode: "onChange",
-  });
-
-  const [owner_id, setOwnerId] = useState<number | null>(null);
+  } = useForm<ShopCreateFormValues>();
 
   const navigate = useNavigate();
 
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: "menus",
-  });
-
-  const addMenu = () => {
-    append({ name: "", price: null });
+  const onSubmit: SubmitHandler<ShopCreateFormValues> = async (data) => {
+    const shopId = await createShop({ ...data });
+    navigate(`/shops/${shopId}`);
   };
 
-  const removeMenu = (index: number) => {
-    remove(index);
-  };
-
-  const onSubmit = handleSubmit(async (data: ShopCreateFormValues) => {
-    try {
-      // TODO delete owner_id
-      const shop_id = await createShop({ owner_id: owner_id!, ...data.shop });
-      const menus: modelType.MenuCreate[] = [];
-      for (let i = 0; i < data.menus.length; i++) {
-        const { name, price } = data.menus[i];
-        if (price === null) {
-          continue;
-        }
-        menus.push({ shop_id, name, price });
-      }
-      await createMenus(menus);
-      navigate(`shops/${shop_id}`);
-    } catch (error) {
-      console.log(error);
+  const renderErrorMessage = (fieldError: FieldError | undefined) => {
+    if (fieldError === undefined) {
+      return;
     }
-  });
+    return <span style={{ color: "red" }}>{fieldError.message}</span>;
+  };
 
   return (
-    <form onSubmit={onSubmit}>
-      <h1>Create Shop</h1>
-      <fieldset>
-        <legend>
-          <span className="number">1</span> Your Shop Info
-        </legend>
-        <div className="error-message">{errors.shop?.name?.message}</div>
-        <label htmlFor="shop.name">Shop name:</label>
-        <input
-          {...register("shop.name", { required: "Required", maxLength: 255 })}
-          id="shop.name"
-          placeholder="Shop Name"
-        />
-        <div className="error-message">{errors.shop?.city?.message}</div>
-        <label htmlFor="shop.city">City:</label>
-        <input
-          {...register("shop.city", { required: "Required", maxLength: 255 })}
-          id="shop.city"
-          placeholder="City"
-        />
-        <div className="error-message">{errors.shop?.address?.message}</div>
-        <label htmlFor="shop.address">Address:</label>
-        <input
-          {...register("shop.address", {
-            required: "Required",
-            maxLength: 255,
-          })}
-          id="shop.address"
-          placeholder="Address"
-        />
-        <div className="error-message">{errors.shop?.latitude?.message}</div>
-        <label htmlFor="shop.latitude">Latitude:</label>
-        <input
-          {...register("shop.latitude", {
-            required: "Required",
-            min: -90,
-            max: 90,
-          })}
-          id="shop.latitude"
-          placeholder="Latitude"
-        />
-        <div className="error-message">{errors.shop?.longitude?.message}</div>
-        <label htmlFor="shop.longitude">Longitude:</label>
-        <input
-          {...register("shop.longitude", {
-            required: "Required",
-            min: -180,
-            max: 180,
-            valueAsNumber: true,
-          })}
-          id="shop.longitude"
-          placeholder="Longitude"
-        />
-      </fieldset>
-      <fieldset>
-        <legend>
-          <span className="number">2</span> Your Menu Info
-        </legend>
-        <table>
-          <thead>
-            <th>#</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Action</th>
-          </thead>
-          <tbody>
-            {fields.map((field, index) => (
-              <MenuItem
-                key={field.id}
-                register={register}
-                menuIndex={index}
-                removeMenu={removeMenu}
-              />
-            ))}
-          </tbody>
-        </table>
-        <button type="button" className="menu-button" onClick={addMenu}>
-          +
-        </button>
-      </fieldset>
-      <button type="submit" id="submit-button">
-        Create
-      </button>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      {renderErrorMessage(errors.name)}
+      <label htmlFor="name">Shop name</label>
+      <input
+        type="text"
+        id="name"
+        placeholder="Shop name"
+        {...register("name", {
+          required: "Please enter your shop name",
+          maxLength: {
+            value: 255,
+            message: "Please enter 255 characters or less.",
+          },
+        })}
+      />
+
+      {renderErrorMessage(errors.address)}
+      <label htmlFor="address">Address</label>
+      <input
+        type="text"
+        id="address"
+        placeholder="Address"
+        {...register("address", {
+          required: "Please enter you shop address",
+          maxLength: {
+            value: 255,
+            message: "Please enter 255 characters or less.",
+          },
+        })}
+      />
+
+      {renderErrorMessage(errors.city)}
+      <label htmlFor="city">City</label>
+      <input
+        type="text"
+        id="city"
+        placeholder="City"
+        {...register("city", {
+          required: "Please enter the city where the shop is located",
+          maxLength: {
+            value: 255,
+            message: "Please enter 255 characters or less.",
+          },
+        })}
+      />
+
+      {renderErrorMessage(errors.latitude)}
+      <label htmlFor="latitude">Latitude</label>
+      <input
+        type="text"
+        id="latitude"
+        placeholder="Latitude"
+        {...register("latitude", {
+          required: "Please enter the latitude where the shop is located",
+        })}
+      />
+
+      {renderErrorMessage(errors.longitude)}
+      <label htmlFor="longitude">Longitude</label>
+      <input
+        type="text"
+        id="longitude"
+        placeholder="Longitude"
+        {...register("longitude", {
+          required: "Please enter the longitude where the shop is located",
+        })}
+      />
+
+      <button type="submit">Create Shop</button>
     </form>
   );
 };
