@@ -83,13 +83,17 @@ Although many features can still be implemented in the future, we believe that i
 
 ### Prerequisites
 
-Install postgres and create database named `decafe`
-
-- postgres
+- Install yarn
 
   ```sh
-  createdb decafe
+  npm install -g yarn
   ```
+
+- Install postgres and create database named `decafe`
+
+    ```sh
+    createdb decafe
+    ```
 
 ### Installation
 
@@ -100,24 +104,24 @@ Install postgres and create database named `decafe`
    cd decafe
    ```
 
-2. Install NPM packages (root, backend and frontend)
+2. Install packages (root, backend and frontend)
 
    ```sh
-   npm install
-   cd backend && npm install && cd -
-   cd frontend && npm install && cd -
+   yarn install
+   yarn --cwd backend install
+   yarn --cwd frontend install
    ```
 
 3. Create tables
 
     ```sh
-    npm run migrate
+    yarn migrate
     ```
 
 4. Seed data
 
     ```sh
-    npm run seed
+    yarn seed
     ```
 
 5. Create `.env` file.
@@ -137,7 +141,7 @@ Install postgres and create database named `decafe`
         > Run the below command at the root of the project.
 
         ```sh
-        npm run dev
+        yarn dev
         ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
