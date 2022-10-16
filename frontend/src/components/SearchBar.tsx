@@ -1,9 +1,9 @@
+// import "@/styles/SearchBar.css";
 import { useEffect, useState } from "react";
-import useDebouncedQuery from "hooks/DebouncedQuery";
+import useDebouncedQuery from "@/hooks/DebouncedQuery";
 import Select from "react-select";
-import { findAllUniqueCities } from "../api";
-import "../styles/SearchBar.css";
-import { Link } from "react-router-dom";
+import { findAllUniqueCities } from "@/api";
+import Link from "next/link";
 
 interface SearchBarProps {
   setSelectedCity: React.Dispatch<React.SetStateAction<string | null>>;
@@ -60,7 +60,7 @@ const SearchBar = ({ setSelectedCity }: SearchBarProps) => {
   return (
     <div className="searchbarWapper">
       <div className="logocenter">
-        <Link to="/" reloadDocument>
+        <Link href="/">
           <img
             src="images/decafelogo.png"
             className="logo"

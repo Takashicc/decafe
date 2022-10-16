@@ -1,4 +1,4 @@
-import "../styles/Menu.css";
+// import "../styles/Menu.css";
 
 interface MenuProps {
   menus: {

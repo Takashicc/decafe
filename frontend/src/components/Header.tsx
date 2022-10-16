@@ -1,18 +1,18 @@
-import { Link } from "react-router-dom";
-import "../styles/header.css";
+// import "@/styles/header.css";
+import Link from "next/link";
 
 const Header = () => {
   return (
     <div className="header">
-      <Link to="/" reloadDocument></Link>
       <div className="shopLinkWrapper">
-        <Link to="/owners/login">Cafe Owners</Link>
+        <Link href="/owners/login">Cafe Owners</Link>
       </div>
       <div className="shopLinkWrapper">
-        <Link to="/owners/logout">Cafe Owners Logout</Link>
+        {/* <Link href="/owners/logout">Cafe Owners Logout</Link> */}
+        {/* TODO Add logout functionality */}
       </div>
       <div className="shopLinkWrapper">
-        <Link to="/shops/new">Create shop</Link>
+        <Link href="/shops/new">Create shop</Link>
       </div>
     </div>
   );
