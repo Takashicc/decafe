@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "dev": "concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
-    "migrate": "npm --prefix backend run migrate",
-    "seed": "npm --prefix backend run seed"
+    "dev": "concurrently \"yarn --cwd backend run dev\" \"yarn --cwd frontend run dev\"",
+    "migrate": "yarn --cwd backend run migrate",
+    "seed": "yarn --cwd backend run seed"
   },
   "devDependencies": {
     "concurrently": "^7.4.0"
