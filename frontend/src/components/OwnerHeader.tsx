@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
-import "../styles/header.css";
+// import "../styles/header.css";
+import Link from "next/link";
 
 const OwnerHeader = () => {
   return (
     <div className="header">
       <div className="ownerWrapper">
-        <Link to="/">Home</Link>
+        <Link href="/">Home</Link>
       </div>
     </div>
   );

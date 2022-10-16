@@ -1,4 +1,4 @@
-import "../styles/PhotoHeader.css";
+// import "../styles/PhotoHeader.css";
 
 //open image in new tab
 const openInNewTab = (url: string): void => {

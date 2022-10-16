@@ -1,4 +1,4 @@
-import "../styles/Map.css";
+// import "../styles/Map.css";
 
 interface MapProps {
   latitude: number;

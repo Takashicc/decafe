@@ -1,7 +1,7 @@
+// import "@/styles/searchResult.css";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { findAllShops } from "../api";
-import "../styles/searchResult.css";
+import { findAllShops } from "@/api";
+import Link from "next/link";
 
 interface AllShopsInfo {
   id: number;
@@ -36,7 +36,7 @@ const SearchResult = ({ selectedCity }: SearchResultProps) => {
         {shops.map((shop) => {
           return (
             <div className="shopInfo">
-              <Link to={`/shops/${shop.id}`}>
+              <Link href={`/shops/${shop.id}`}>
                 <div className="shopInfoText">
                   <span className="shopName">{shop.name}</span>
                   <br></br>

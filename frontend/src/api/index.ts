@@ -1,6 +1,6 @@
-import api from "lib/axios_settings";
-import * as modelType from "model_type";
-import * as schema from "api/schema";
+import api from "@/lib/axios_settings";
+import * as modelType from "@/model_type";
+import * as schema from "@/api/schema";
 
 /**
  * Create new shop.
