@@ -2,7 +2,7 @@ import { create } from "middleware-axios/dist";
 import Cookies from "js-cookie";
 
 const api = create({
-  baseURL: "http://localhost:8080", // TODO Make it environment variable
+  baseURL: process.env.BACKEND_BASE_URL || "http://localhost:8080", // TODO Make it environment variable
 });
 
 api.use(async (config, next, defaults) => {
