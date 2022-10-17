@@ -1,4 +1,6 @@
-module.exports = {
+const environment = process.env.ENVIRONMENT || "development";
+
+const config = {
   development: {
     debug: true,
     client: "pg",
@@ -26,3 +28,5 @@ module.exports = {
     },
   },
 };
+
+module.exports = config[environment];
