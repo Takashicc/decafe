@@ -1,0 +1,71 @@
+.menu_table {
+  border-collapse: collapse;
+  font-size: 0.9em;
+  display: flex;
+  position: relative;
+  flex-flow: column nowrap;
+  font-family: "IM Fell English SC";
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin-left: 300px;
+  float: left;
+  letter-spacing: 1px;
+}
+
+.menu_top {
+  font-size: 40px;
+}
+
+.list {
+  display: flex;
+  justify-content: flex-start;
+  color: currentColor;
+  text-decoration: none;
+  padding: 3px;
+  order: 0;
+}
+
+.list::before {
+  content: "";
+  display: block;
+  border-bottom: 1px dotted black;
+  position: relative;
+  top: -3px;
+  flex: 1 1 auto;
+  margin: 0 1rem;
+  order: 1;
+}
+
+.list::after {
+  counter-increment: menu;
+  content: counters(menu, ".");
+  flex: 0 0 auto;
+  content: "";
+  order: 2;
+}
+
+.list:hover {
+  transition: background-color 0.3s;
+  background: rgba(255, 255, 0, 0.15);
+  opacity: 1 !important;
+}
+
+.list:hover > .list::before {
+  transition: flex-grow 0.3s;
+  width: 0;
+  flex-grow: 0;
+  transform-origin: center bottom;
+}
+
+.drink_title {
+  font-weight: bold;
+}
+
+.drink_price_title {
+  font-weight: bold;
+  order: 3;
+}
+
+.drink_price {
+  order: 3;
+}
