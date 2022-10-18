@@ -1,6 +1,5 @@
-// import "../styles/PhotoHeader.css";
+import styles from "@/styles/components/organisms/PhotoHeader.module.scss";
 
-//open image in new tab
 const openInNewTab = (url: string): void => {
   const newWindow = window.open(url, "_blank", "noopener,noreferrer");
   if (newWindow) newWindow.opener = null;
@@ -11,7 +10,7 @@ interface PhotoHeaderProps {
 }
 
 const PhotoHeader = ({ shopName }: PhotoHeaderProps) => {
-  //image string example
+  // TODO After implementing image upload feature, fix it.
   const images = [
     "images/1 (3).jpg",
     "images/2.jpg",
@@ -21,13 +20,13 @@ const PhotoHeader = ({ shopName }: PhotoHeaderProps) => {
   ];
 
   return (
-    <div className="imagewrapper">
-      <div className="imagejoined">
+    <div className={styles.image_wrapper}>
+      <div className={styles.image_joined}>
         {images.map((image: string, i) => {
           const alt_tag = `shop image ${i}`;
           return (
             <img
-              className="image"
+              className={styles.image}
               src={`${image}`}
               onClick={() => {
                 openInNewTab(`${image}`);
@@ -38,7 +37,7 @@ const PhotoHeader = ({ shopName }: PhotoHeaderProps) => {
           );
         })}
       </div>
-      <div className="storename">{shopName}</div>
+      <div className={styles.store_name}>{shopName}</div>
     </div>
   );
 };
