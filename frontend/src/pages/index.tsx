@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Header from "@/components/Header";
-import SearchBar from "@/components/SearchBar";
-import SearchResult from "@/components/SearchResult";
+import Header from "@/components/organisms/Header";
+import SearchBar from "@/components/organisms/SearchBar";
+import SearchResult from "@/components/organisms/SearchResult";
 
 const Index = () => {
   const [selectedCity, setSelectedCity] = useState<string | null>(null);

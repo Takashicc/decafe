@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { findShopAndMenusByShopId } from "@/api";
-import Map from "@/components/Map";
-import Menu from "@/components/Menu";
-import PhotoHeader from "@/components/PhotoHeader";
+import Map from "@/components/atoms/Map";
+import Menu from "@/components/molecules/Menu";
+import PhotoHeader from "@/components/organisms/PhotoHeader";
 import isNumeric from "validator/lib/isNumeric";
 import { ShopAndMenus } from "@/api/schema";
 import { useRouter } from "next/router";
@@ -29,7 +29,7 @@ const Detail = () => {
     }
 
     return (
-      <div className="Shopmain">
+      <div>
         <PhotoHeader shopName={shopDetail.shop.name} />
         <Menu menus={shopDetail.menus} />
         <Map
