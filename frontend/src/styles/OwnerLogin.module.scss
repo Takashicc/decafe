@@ -9,24 +9,28 @@
   background-color: #ffffff;
 }
 
-.logintitle{
-  font-family:"Roboto";
-  font-weight:bold;
+.login_title {
+  font-family: "Roboto";
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
-#name {
+.error_message {
+  color: red;
+}
+
+.name {
   height: 25px;
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-#password {
+.password {
   margin-left: 3px;
   height: 25px;
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-#submit-button {
+.submit_button {
   margin-top: 10px;
   cursor: pointer;
   font-size: 15px;
@@ -34,8 +38,4 @@
   border: 1px solid #01d28e;
   color: #fff;
   padding: 10px 20px;
-}
-
-.error-message {
-  color: red;
 }
