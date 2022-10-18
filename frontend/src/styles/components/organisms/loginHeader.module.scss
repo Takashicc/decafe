@@ -1,0 +1,25 @@
+.header {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #ffffff;
+    text-decoration: none;
+}
+
+.owner_wrapper {
+    margin-top: 1rem;
+    margin-right: auto;
+    text-decoration: none;
+}
+
+.owner_wrapper a {
+    margin-left: 30px;
+    color: black;
+    font-weight: 400;
+    font-family: "Roboto";
+}
+
+.owner_wrapper a:hover {
+    color: rgb(22, 154, 202);
+    text-decoration: none;
+}
