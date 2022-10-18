@@ -71,7 +71,7 @@ Although many features can still be implemented in the future, we believe that i
 
 ### Built With
 
-[![React][React]][React-url]  
+[![Nextjs][Nextjs]][Nextjs-url]  
 [![Postgres][Postgres]][Postgres-url]  
 [![JWT][JWT]][JWT-url]  
 [![Visual Studio Code][Visual Studio Code]][Visual Studio Code-url]  
@@ -187,8 +187,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [issues-url]: https://github.com/Takashicc/decafe/issues
 [license-shield]: https://img.shields.io/github/license/Takashicc/decafe.svg?style=for-the-badge
 [license-url]: https://github.com/Takashicc/decafe/blob/master/LICENSE.txt
-[React]: https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB
-[React-url]: https://reactjs.org/
+[Nextjs]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Nextjs-url]: https://nextjs.org/
 [Postgres]: https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white
 [Postgres-url]: https://www.postgresql.org/
 [JWT]: https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens
