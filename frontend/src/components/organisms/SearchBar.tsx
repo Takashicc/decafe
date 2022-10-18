@@ -1,4 +1,4 @@
-// import "@/styles/SearchBar.css";
+import styles from "@/styles/components/organisms/SearchBar.module.scss";
 import { useEffect, useState } from "react";
 import useDebouncedQuery from "@/hooks/DebouncedQuery";
 import Select from "react-select";
@@ -58,12 +58,12 @@ const SearchBar = ({ setSelectedCity }: SearchBarProps) => {
   }, []);
 
   return (
-    <div className="searchbarWapper">
-      <div className="logocenter">
+    <div className={styles.search_bar_wrapper}>
+      <div className={styles.logo_center}>
         <Link href="/">
           <img
             src="images/decafelogo.png"
-            className="logo"
+            className={styles.logo}
             alt="decafe logo"
           ></img>
         </Link>
