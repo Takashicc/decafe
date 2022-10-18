@@ -1,20 +1,20 @@
-.map {
-  margin-right: 350px;
-  display: flex;
-  }
-
-.mapwrapper {
+.map_wrapper {
   margin-top: 10px;
   font-family: "Montserrat";
-  float:right;
+  float: right;
 }
 
 .location {
   font-size: 25px;
 }
 
+.map {
+  margin-right: 350px;
+  display: flex;
+}
+
 .address {
   font-size: 13px;
   margin: auto;
   display: flex;
-      }
+}
