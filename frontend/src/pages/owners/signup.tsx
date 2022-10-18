@@ -1,4 +1,4 @@
-// import "../styles/OwnerSignUp.css";
+import styles from "@/styles/OwnerSignUp.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -34,34 +34,38 @@ const SignUp = () => {
   };
 
   return (
-    <div className="sign-up">
+    <div className={styles.sign_up}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div> Sign up!</div>
-        <div className="error-message">{message}</div>
+        <div className={styles.error_message}>{message}</div>
         <div>
           <label>Username </label>
           <input
             type="text"
-            id="name"
+            className={styles.name}
             placeholder="User Name"
             {...register("name", {
               required: "Name is required",
             })}
           />
-          <div className="error-message">{errors.name?.message}</div>
+          <div className={styles.error_message}>{errors.name?.message}</div>
         </div>
         <div>
           <label>Password </label>
           <input
             type="password"
-            id="password"
+            className={styles.password}
             placeholder="Password"
             {...register("password", { required: "Password is required" })}
           />
-          <div className="error-message">{errors.password?.message}</div>
+          <div className={styles.error_message}>{errors.password?.message}</div>
         </div>
         <div>
-          <input type="submit" id="submit-button" value="SignUp" />
+          <input
+            type="submit"
+            className={styles.submit_button}
+            value="SignUp"
+          />
         </div>
         <div>
           Do you already have an account? click{" "}

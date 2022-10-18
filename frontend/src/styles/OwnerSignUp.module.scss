@@ -1,4 +1,4 @@
-.sign-up {
+.sign_up {
   font-family: sans-serif;
   display: flex;
   align-items: center;
@@ -10,18 +10,22 @@
   background-color: #f8f9fd;
 }
 
-#name {
+.error_message {
+  color: red;
+}
+
+.name {
   height: 25px;
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-#password {
+.password {
   margin-left: 3px;
   height: 25px;
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-#submit-button {
+.submit_button {
   margin-top: 10px;
   cursor: pointer;
   font-size: 15px;
@@ -29,8 +33,4 @@
   border: 1px solid #01d28e;
   color: #fff;
   padding: 10px 20px;
-}
-
-.error-message {
-  color: red;
 }
