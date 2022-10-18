@@ -1,4 +1,4 @@
-// import "../styles/OwnerLogin.css";
+import styles from "@/styles/OwnerLogin.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 import { ownerLogin } from "@/api";
 import * as schema from "@/api/schema";
 import * as modelType from "@/model_type";
-import OwnerHeader from "@/components/OwnerHeader";
+import LoginHeader from "@/components/organisms/LoginHeader";
 
 const Login: React.FC = () => {
   const router = useRouter();
@@ -36,45 +36,47 @@ const Login: React.FC = () => {
 
   return (
     <>
-      <OwnerHeader />
+      <LoginHeader />
 
-      <div className="login">
-        <div className="logocenter">
+      <div className={styles.login}>
+        <div>
           <Link href="/">
-            <img
-              src="/images/decafeowner.png"
-              className="ownerlogo"
-              alt="decafe owner logo"
-            ></img>
+            <img src="/images/decafeowner.png" alt="decafe owner logo"></img>
           </Link>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="logintitle"> Login </div>
-          <div className="error-message">{message}</div>
+          <div className={styles.login_title}> Login </div>
+          <div className={styles.error_message}>{message}</div>
           <div>
             <label>Username </label>
             <input
               type="text"
-              id="name"
+              className={styles.name}
               placeholder="User Name"
               {...register("name", {
                 required: "Name is required",
               })}
             />
-            <div className="error-message">{errors.name?.message}</div>
+            <div className={styles.error_message}>{errors.name?.message}</div>
           </div>
           <div>
             <label>Password </label>
             <input
               type="password"
-              id="password"
+              className={styles.password}
               placeholder="Password"
               {...register("password", { required: "Password is required" })}
             />
-            <div className="error-message">{errors.password?.message}</div>
+            <div className={styles.error_message}>
+              {errors.password?.message}
+            </div>
           </div>
           <div>
-            <input type="submit" id="submit-button" value="Login" />
+            <input
+              type="submit"
+              className={styles.submit_button}
+              value="Login"
+            />
           </div>
           <div>
             Don't have an account? click <Link href="/owners/signup">HERE</Link>{" "}
