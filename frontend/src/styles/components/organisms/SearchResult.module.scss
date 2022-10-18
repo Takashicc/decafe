@@ -1,47 +1,48 @@
 .shopListWrapper {
     margin-top: 1rem;
     margin-left: 20rem;
-    margin-right: 20rem; 
+    margin-right: 20rem;
 }
 
 .shopListWrapper h2 {
     text-align: center;
-    font-family:"Montserrat";
+    font-family: "Montserrat";
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
-.cityName{
+.cityName {
     font-weight: bold;
 }
 
 .shopInfoWrapper {
-    font-family:"Montserrat";
+    font-family: "Montserrat";
     padding: 2rem 2rem 1rem 2rem;
-    background-color:rgb(245, 250, 255);
+    background-color: rgb(245, 250, 255);
     border-radius: 25px;
     margin-bottom: 3rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
 
-.shopInfoWrapper a, a:visited {
+.shopInfoWrapper {
+    cursor: pointer;
     text-decoration: none;
     color: black;
 }
 
-.shopInfoWrapper a:hover {
-    color:rgb(141, 60, 60);
-    text-decoration: none;
-}
-
-.shopInfo  {
+.shopInfo {
     align-content: flex-start;
     padding-bottom: 1rem;
     font-weight: bold;
     border-top: solid 1px rgb(86, 193, 255);
     padding-top: 1rem;
+}
+
+.shopInfo:hover {
+    color: rgb(141, 60, 60);
+    text-decoration: none;
 }
 
 .shopInfoText {
@@ -66,6 +67,6 @@
     font-size: 25px;
 }
 
-.shopAddress{
+.shopAddress {
     font-size: 12px;
 }
