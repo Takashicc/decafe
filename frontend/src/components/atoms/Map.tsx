@@ -1,4 +1,4 @@
-// import "../styles/Map.css";
+import styles from "@/styles/components/atoms/Map.module.scss";
 
 interface MapProps {
   latitude: number;
@@ -8,9 +8,9 @@ interface MapProps {
 
 const Map = ({ latitude, longitude, address }: MapProps) => {
   return (
-    <div className="mapwrapper">
-      <span className="location">Location</span>
-      <div className="map">
+    <div className={styles.map_wrapper}>
+      <span className={styles.location}>Location</span>
+      <div className={styles.map}>
         <iframe
           title="Shop location"
           src={`https://maps.google.com/maps?q=${latitude}, ${longitude}&z=15&output=embed`}
@@ -19,7 +19,7 @@ const Map = ({ latitude, longitude, address }: MapProps) => {
           loading="lazy"
         ></iframe>
       </div>
-      <div className="address">{address}</div>
+      <div className={styles.address}>{address}</div>
     </div>
   );
 };
