@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Button from "./Button";
+import { Button } from "./";
 import { CiLogin } from "react-icons/ci";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 

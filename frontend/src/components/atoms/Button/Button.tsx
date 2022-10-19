@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@chakra-ui/react";
+import { Button as ChakraButton } from "@chakra-ui/react";
 
 type Element = React.ReactElement<
   any,
@@ -14,7 +14,7 @@ interface ButtonProps {
   rightIcon?: Element;
 }
 
-const AppButton: React.FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({
   text,
   size = "md",
   variant = "solid",
@@ -22,15 +22,13 @@ const AppButton: React.FC<ButtonProps> = ({
   rightIcon,
 }) => {
   return (
-    <Button
+    <ChakraButton
       size={size}
       variant={variant}
       leftIcon={leftIcon}
       rightIcon={rightIcon}
     >
       {text}
-    </Button>
+    </ChakraButton>
   );
 };
-
-export default AppButton;
