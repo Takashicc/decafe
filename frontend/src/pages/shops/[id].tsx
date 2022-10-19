@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { findShopAndMenusByShopId } from "@/api";
-import Map from "@/components/atoms/Map";
+import { Map } from "@/components/atoms/Map";
 import Menu from "@/components/molecules/Menu";
 import PhotoHeader from "@/components/organisms/PhotoHeader";
 import isNumeric from "validator/lib/isNumeric";
