@@ -1,5 +1,5 @@
 import React, { memo, HTMLInputTypeAttribute } from "react";
-import { Input } from "@chakra-ui/react";
+import { Input as ChakraInput } from "@chakra-ui/react";
 
 interface InputProps {
   type: HTMLInputTypeAttribute;
@@ -7,10 +7,10 @@ interface InputProps {
   variant?: "outline" | "filled" | "flushed" | "unstyled";
 }
 
-const AppInput: React.FC<InputProps> = memo(
+export const Input: React.FC<InputProps> = memo(
   ({ type, placeHolder, variant = "filled" }) => {
-    return <Input type={type} placeholder={placeHolder} variant={variant} />;
+    return (
+      <ChakraInput type={type} placeholder={placeHolder} variant={variant} />
+    );
   }
 );
-
-export default AppInput;
