@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions: cors.CorsOptions = {
-  origin: ["http://localhost:3000", "https://decafe.vercel.app"],
+  origin: ["http://127.0.0.1:3000", "https://decafe.vercel.app"],
   credentials: true,
 };
 app.use(cors(corsOptions));
