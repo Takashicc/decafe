@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Button as ChakraButton } from "@chakra-ui/react";
 
 type Element = React.ReactElement<
@@ -14,21 +14,17 @@ interface ButtonProps {
   rightIcon?: Element;
 }
 
-export const Button: React.FC<ButtonProps> = ({
-  text,
-  size = "md",
-  variant = "solid",
-  leftIcon,
-  rightIcon,
-}) => {
-  return (
-    <ChakraButton
-      size={size}
-      variant={variant}
-      leftIcon={leftIcon}
-      rightIcon={rightIcon}
-    >
-      {text}
-    </ChakraButton>
-  );
-};
+export const Button: React.FC<ButtonProps> = memo(
+  ({ text, size = "md", variant = "solid", leftIcon, rightIcon }) => {
+    return (
+      <ChakraButton
+        size={size}
+        variant={variant}
+        leftIcon={leftIcon}
+        rightIcon={rightIcon}
+      >
+        {text}
+      </ChakraButton>
+    );
+  }
+);
