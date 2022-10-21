@@ -11,12 +11,16 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   type: "email",
+  id: "email",
+  label: "Email Address",
   placeHolder: "Enter your email",
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
   type: "email",
+  id: "email",
+  label: "Email Address",
   placeHolder: "Enter your email",
   variant: "outline",
 };
