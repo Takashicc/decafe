@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { FormErrorMessage, FormControl, Flex } from "@chakra-ui/react";
+import {
+  FormErrorMessage,
+  FormControl,
+  Flex,
+  Image,
+  Box,
+} from "@chakra-ui/react";
 import { Input } from "@/components/atoms/Input";
 import { Button } from "@/components/atoms/Button";
 import * as schema from "@/api/schema";
@@ -57,53 +63,60 @@ export const LoginArea: React.FC = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {showMessage(message)}
-        <FormControl isInvalid={errors.email !== undefined}>
-          <Input
-            type="email"
-            id="email"
-            label="Email Address"
-            placeHolder="Enter your email address"
-            register={register("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                message: "Email is invalid format",
-              },
-            })}
-          />
-          {showMessage(errors.email?.message)}
-        </FormControl>
-        <FormControl isInvalid={errors.password !== undefined}>
-          <Input
-            type="password"
-            id="password"
-            label="Password"
-            placeHolder="Enter your password"
-            register={register("password", {
-              required: "Password is required",
-            })}
-          />
-          {showMessage(errors.password?.message)}
-        </FormControl>
-        <Flex justifyContent={"end"}>
-          <Button
-            text="Login"
-            leftIcon={<FiLogIn />}
-            isLoading={isSubmitting}
-            {...{ mt: 2 }}
-          />
+      <NextLink href="/">
+        <Box boxSize="sm">
+          <Image src="/images/decafeowner.png" alt="decafe owner logo" />
+        </Box>
+      </NextLink>
+      <Flex direction="column">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {showMessage(message)}
+          <FormControl isInvalid={errors.email !== undefined}>
+            <Input
+              type="email"
+              id="email"
+              label="Email Address"
+              placeHolder="Enter your email address"
+              register={register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                  message: "Email is invalid format",
+                },
+              })}
+            />
+            {showMessage(errors.email?.message)}
+          </FormControl>
+          <FormControl isInvalid={errors.password !== undefined}>
+            <Input
+              type="password"
+              id="password"
+              label="Password"
+              placeHolder="Enter your password"
+              register={register("password", {
+                required: "Password is required",
+              })}
+            />
+            {showMessage(errors.password?.message)}
+          </FormControl>
+          <Flex justifyContent="end">
+            <Button
+              text="Login"
+              leftIcon={<FiLogIn />}
+              isLoading={isSubmitting}
+              {...{ mt: 2 }}
+            />
+          </Flex>
+        </form>
+        <Flex justifyContent="center" mt="20px">
+          Don't have an account? click
+          <NextLink href="/owners/signup">
+            <ChakraLink color="teal.500" mx={2}>
+              HERE
+            </ChakraLink>
+          </NextLink>
+          to create one!
         </Flex>
-      </form>
-      <Flex justifyContent={"center"}>
-        Don't have an account? click
-        <NextLink href="/owners/signup">
-          <ChakraLink color="teal.500" mx={2}>
-            HERE
-          </ChakraLink>
-        </NextLink>
-        to create one!
       </Flex>
     </>
   );
