@@ -22,9 +22,6 @@ export const Input: React.FC<InputProps> = memo(
     register,
     ...props
   }) => {
-    console.log("props:::");
-    console.log(props);
-
     return (
       <Box p={1}>
         <FormLabel htmlFor={id}>{label}</FormLabel>
