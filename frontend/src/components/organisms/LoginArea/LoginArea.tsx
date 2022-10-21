@@ -63,11 +63,13 @@ export const LoginArea: React.FC = () => {
 
   return (
     <>
-      <NextLink href="/">
-        <Box boxSize="sm">
-          <Image src="/images/decafeowner.png" alt="decafe owner logo" />
-        </Box>
-      </NextLink>
+      <Flex justify="center">
+        <NextLink href="/">
+          <Box boxSize="sm">
+            <Image src="/images/decafeowner.png" alt="decafe owner logo" />
+          </Box>
+        </NextLink>
+      </Flex>
       <Flex direction="column">
         <form onSubmit={handleSubmit(onSubmit)}>
           {showMessage(message)}
