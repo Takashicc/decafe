@@ -1,27 +1,36 @@
 import React, { memo } from "react";
 import { Button as ChakraButton } from "@chakra-ui/react";
 
-type Element = React.ReactElement<
-  any,
-  string | React.JSXElementConstructor<any>
->;
-
 interface ButtonProps {
   text: string;
+  type?: "submit" | "button";
   size?: "sm" | "md" | "lg" | "xs";
   variant?: "solid" | "ghost" | "outline" | "link";
-  leftIcon?: Element;
-  rightIcon?: Element;
+  leftIcon?: JSX.Element;
+  rightIcon?: JSX.Element;
+  isLoading?: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = memo(
-  ({ text, size = "md", variant = "solid", leftIcon, rightIcon }) => {
+  ({
+    text,
+    type = "submit",
+    size = "md",
+    variant = "solid",
+    leftIcon,
+    rightIcon,
+    isLoading = false,
+    ...props
+  }) => {
     return (
       <ChakraButton
+        type={type}
         size={size}
         variant={variant}
         leftIcon={leftIcon}
         rightIcon={rightIcon}
+        isLoading={isLoading}
+        {...props}
       >
         {text}
       </ChakraButton>

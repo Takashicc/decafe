@@ -15,6 +15,12 @@ Default.args = {
   text: "Login",
 };
 
+export const Loading = Template.bind({});
+Loading.args = {
+  text: "Login",
+  isLoading: true,
+};
+
 export const Large = Template.bind({});
 Large.args = {
   text: "Login",
