@@ -7,7 +7,7 @@ import {
   Image,
   Box,
 } from "@chakra-ui/react";
-import { Input } from "@/components/atoms/Input";
+import { Input } from "@/components/molecules/Input";
 import { Button } from "@/components/atoms/Button";
 import * as schema from "@/api/schema";
 import Cookies from "js-cookie";

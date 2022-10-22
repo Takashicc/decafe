@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Input } from "./";
 
 export default {
-  title: "Design System/Atoms/Input",
+  title: "Design System/Molecules/Input",
   component: Input,
 } as ComponentMeta<typeof Input>;
 
