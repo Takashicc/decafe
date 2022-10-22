@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import {
-  FormErrorMessage,
-  FormControl,
-  Flex,
-  Image,
-  Box,
-} from "@chakra-ui/react";
+import { Text, FormControl, Flex, Image, Box } from "@chakra-ui/react";
 import { Input } from "@/components/molecules/Input";
 import { Button } from "@/components/atoms/Button";
 import * as schema from "@/api/schema";
@@ -16,10 +10,16 @@ import { FiLogIn } from "react-icons/fi";
 import NextLink from "next/link";
 import { Link as ChakraLink } from "@chakra-ui/layout";
 import { useRouter } from "next/router";
+import axios, { AxiosError } from "axios";
 
 interface LoginAreaForm {
   email: string;
   password: string;
+}
+
+// TODO is there a better way to handle axios error?
+function isAxiosError<T>(error: unknown): error is AxiosError<T> {
+  return axios.isAxiosError(error);
 }
 
 export const LoginArea: React.FC = () => {
@@ -34,23 +34,21 @@ export const LoginArea: React.FC = () => {
   const [message, setMessage] = useState<string>();
 
   function onSubmit(formValues: LoginAreaForm) {
-    return new Promise(async () => {
-      const response = await api.post<schema.Auth>(
-        "/api/v1/owners/login",
-        formValues
-      );
-      const auth: schema.Auth = response.data;
+    return api
+      .post<schema.Auth>("/api/v1/owners/login", formValues)
+      .then((res) => {
+        const response = res.data;
 
-      if (auth.message) {
-        setMessage(auth.message);
-        return;
-      }
-
-      if (auth.access_token) {
-        Cookies.set("access_token", auth.access_token);
-        router.push("/");
-      }
-    });
+        if (response.access_token) {
+          Cookies.set("access_token", response.access_token);
+          router.push("/");
+        }
+      })
+      .catch((e) => {
+        if (isAxiosError<schema.Auth>(e)) {
+          setMessage(e.response?.data.message);
+        }
+      });
   }
 
   const showMessage = (msg: string | undefined) => {
@@ -58,7 +56,11 @@ export const LoginArea: React.FC = () => {
       return <></>;
     }
 
-    return <FormErrorMessage>{msg}</FormErrorMessage>;
+    return (
+      <Text fontSize="sm" color="tomato">
+        {msg}
+      </Text>
+    );
   };
 
   return (
