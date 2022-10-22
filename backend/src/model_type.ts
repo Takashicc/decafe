@@ -30,11 +30,7 @@ export interface MenuCreate {
 export interface Owner {
   id?: number;
   name: string;
-  password: string;
-}
-
-export interface SignUpOwner {
-  name: string;
+  email: string;
   password: string;
 }
 
