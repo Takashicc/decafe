@@ -5,27 +5,31 @@ import { jwtHelper } from "../helper/JwtHelper";
 import { UsernameOrPasswordInvalidError } from "../error/Error";
 import * as modelType from "model_type";
 
+interface Login {
+  email: string;
+  password: string;
+}
+
 const router = express.Router();
 router.post("/owners/login", async (req, res, next) => {
   try {
-    const user: modelType.LoginOwner = req.body;
-    if (!user.name || !user.password) {
+    const user: Login = req.body;
+    if (!user.email || !user.password) {
       throw new UsernameOrPasswordInvalidError();
     }
 
-    const result: modelType.Owner | undefined =
-      await OwnerRepository.findOwnerByName(user.name);
-    if (!result) {
+    const owner: modelType.Owner | undefined =
+      await OwnerRepository.findOwnerByEmail(user.email);
+    if (!owner) {
       throw new UsernameOrPasswordInvalidError();
     }
 
-    const match = await bcrypt.compare(user.password, result.password);
-    console.log(match);
+    const match = await bcrypt.compare(user.password, owner.password);
     if (!match) {
       throw new UsernameOrPasswordInvalidError();
     }
 
-    const access_token: string = jwtHelper.createToken(result.id!);
+    const access_token: string = jwtHelper.createToken(owner.id!);
     res.status(200).send({ access_token });
   } catch (err) {
     next(err);

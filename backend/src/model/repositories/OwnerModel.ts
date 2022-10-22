@@ -19,23 +19,22 @@ export async function countOwnersByName(name: string): Promise<number> {
 }
 
 /**
- * Find owner by name.
+ * Find owner by email.
  * If owner was not found, return undefined.
  *
- * @param name Name.
+ * @param email Email.
  * @returns Owner or undefined.
  */
-export async function findOwnerByName(
-  name: string
+export async function findOwnerByEmail(
+  email: string
 ): Promise<modelType.Owner | undefined> {
   const owner = await knex
     .select<modelType.Owner>({
       id: "id",
-      name: "name",
       password: "password",
     })
     .from(TABLE_OWNERS)
-    .where({ name })
+    .where({ email })
     .first();
 
   return owner;
