@@ -74,20 +74,6 @@ export const findAllUniqueCities = async (): Promise<schema.CityOnly[]> => {
 };
 
 /**
- * Send data to the server and verify the owner user exist.
- *
- * @param user User object
- * @returns ErrorInfo object
- */
-export const ownerLogin = async (
-  user: modelType.LoginOwner
-): Promise<schema.Auth> => {
-  const response = await api.post<schema.Auth>("/api/v1/owners/login", user);
-
-  return response.data;
-};
-
-/**
  * Send data to the server and sign up a new owner user.
  *
  * @param user User object
