@@ -72,17 +72,3 @@ export const findAllUniqueCities = async (): Promise<schema.CityOnly[]> => {
   const response = await api.get<schema.CityOnly[]>(`/api/v1/cities`);
   return response.data;
 };
-
-/**
- * Send data to the server and sign up a new owner user.
- *
- * @param user User object
- * @returns ErrorInfo object
- */
-export const ownersSignUp = async (
-  user: modelType.SignUpOwner
-): Promise<schema.Auth> => {
-  const response = await api.post<schema.Auth>("/api/v1/owners/new", user);
-
-  return response.data;
-};
