@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Text, FormControl, Flex, Image, Box } from "@chakra-ui/react";
+import { FormControl, Flex, Image, Box } from "@chakra-ui/react";
 import { Input } from "@/components/molecules/Input";
 import { Button } from "@/components/atoms/Button";
 import * as schema from "@/api/schema";
@@ -10,16 +10,11 @@ import { FiLogIn } from "react-icons/fi";
 import NextLink from "next/link";
 import { Link as ChakraLink } from "@chakra-ui/layout";
 import { useRouter } from "next/router";
-import axios, { AxiosError } from "axios";
+import { showMessage, isAxiosError } from "@/utils";
 
 interface LoginAreaForm {
   email: string;
   password: string;
-}
-
-// TODO is there a better way to handle axios error?
-function isAxiosError<T>(error: unknown): error is AxiosError<T> {
-  return axios.isAxiosError(error);
 }
 
 export const LoginArea: React.FC = () => {
@@ -50,18 +45,6 @@ export const LoginArea: React.FC = () => {
         }
       });
   }
-
-  const showMessage = (msg: string | undefined) => {
-    if (!msg) {
-      return <></>;
-    }
-
-    return (
-      <Text fontSize="sm" color="tomato">
-        {msg}
-      </Text>
-    );
-  };
 
   return (
     <>
