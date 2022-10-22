@@ -3,17 +3,6 @@ import * as modelType from "@/model_type";
 import * as schema from "@/api/schema";
 
 /**
- * Create new shop.
- *
- * @param shop Shop object.
- * @returns Created shop id.
- */
-export const createShop = async (shop: schema.ShopCreate): Promise<number> => {
-  const response = await api.post<schema.ShopIdOnly>(`/api/v1/shops/new`, shop);
-  return response.data.shopId;
-};
-
-/**
  *
  * @param menus Array of menu object
  * @returns Array of inserted menu id
