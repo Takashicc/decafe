@@ -23,11 +23,3 @@ export interface CityOnly {
 export interface ShopIdOnly {
   shopId: number;
 }
-
-export interface ShopCreate {
-  name: string;
-  address: string;
-  city: string;
-  latitude: number;
-  longitude: number;
-}
