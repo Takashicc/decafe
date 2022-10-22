@@ -24,11 +24,6 @@ export interface Owner {
   password: string;
 }
 
-export interface SignUpOwner {
-  name: string;
-  password: string;
-}
-
 export interface ErrorInfo {
   message: string;
 }
