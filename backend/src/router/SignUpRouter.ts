@@ -6,25 +6,30 @@ import {
   UserExistsError,
   UsernameOrPasswordInvalidError,
 } from "../error/Error";
-import * as modelType from "model_type";
+
+interface SignUp {
+  name: string;
+  email: string;
+  password: string;
+}
 
 const router = express.Router();
 router.post("/owners/new", async (req, res, next) => {
   try {
-    const user: modelType.SignUpOwner = req.body;
-    if (!user.name || !user.password) {
-      console.log(user.name, user.password);
+    const user: SignUp = req.body;
+    if (!user.name || !user.email || !user.password) {
       throw new UsernameOrPasswordInvalidError();
     }
 
-    const result = await OwnerRepository.countOwnersByName(user.name);
-    if (result > 0) {
+    const count = await OwnerRepository.countOwnersByEmail(user.email);
+    if (count > 0) {
       throw new UserExistsError();
     }
 
     const hashedPassword = await bcrypt.hash(user.password, 10);
     const owner_id = await OwnerRepository.createOwner({
       name: user.name,
+      email: user.email,
       password: hashedPassword,
     });
 
