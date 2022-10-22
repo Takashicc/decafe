@@ -3,16 +3,16 @@ import { TABLE_OWNERS } from "../const";
 import * as modelType from "model_type";
 
 /**
- * Count owners by name.
+ * Count owners by email.
  *
- * @param name Name.
+ * @param email Email.
  * @returns Number of records.
  */
-export async function countOwnersByName(name: string): Promise<number> {
+export async function countOwnersByEmail(email: string): Promise<number> {
   const total = await knex
     .count("id")
     .from(TABLE_OWNERS)
-    .where({ name })
+    .where({ email })
     .first();
 
   return +total!.count;
@@ -47,6 +47,6 @@ export async function findOwnerByEmail(
  * @returns Created owner id.
  */
 export async function createOwner(owner: modelType.Owner): Promise<number> {
-  const row = await knex(TABLE_OWNERS).insert(owner, "id").first();
-  return row.id;
+  const rows = await knex(TABLE_OWNERS).insert(owner, "id").returning("id");
+  return rows[0].id;
 }
