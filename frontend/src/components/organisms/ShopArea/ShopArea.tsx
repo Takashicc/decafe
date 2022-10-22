@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { FormControl, Flex } from "@chakra-ui/react";
+import { FormControl, Flex, Text } from "@chakra-ui/react";
 import { Input } from "@/components/molecules/Input";
 import { Button } from "@/components/atoms/Button";
 import * as schema from "@/api/schema";
@@ -30,7 +30,7 @@ export const ShopArea: React.FC = () => {
 
   function onSubmit(formValues: ShopAreaForm) {
     return api
-      .post<schema.ShopIdOnly>("/api/v1/owners/new", formValues)
+      .post<schema.ShopIdOnly>("/api/v1/shops/new", formValues)
       .then((res) => {
         const shopId = res.data.shopId;
         router.push(`/shops/${shopId}`);
@@ -42,6 +42,9 @@ export const ShopArea: React.FC = () => {
 
   return (
     <>
+      <Text fontSize="6xl" mb="10">
+        Create Shop
+      </Text>
       <Flex direction="column">
         <form onSubmit={handleSubmit(onSubmit)}>
           {showMessage(message)}
